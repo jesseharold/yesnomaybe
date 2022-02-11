@@ -1,6 +1,13 @@
 # yesnomaybe
 a web-based, customizable yes-no-maybe list for sharing
 https://yesnomaybe.netlify.app/
+
+## Todo
+- ability to print to PDF
+- add categories to items and headers to list
+- make categories collapsible
+- place to put your name/initial and date on it
+- intro text about consent, how to use
 ## Project setup
 ```
 npm install
