@@ -1,532 +1,664 @@
 {
   "items": [
     {
-      "id": "itemTwo",
+      "id": "kiss",
+      "category": "touch",
       "label": "Kissing (mouth, body)"
     },
 
     {
-      "id": "itemTwo",
+      "id": "chest",
+      "category": "touch",
       "label": "Chest play (licking, sucking, biting, groping)"
     },
 
     {
-      "id": "itemTwo",
+      "id": "dryhump",
+      "category": "touch",
       "label": "Dry humping / clothed rubbing"
     },
 
     {
-      "id": "itemTwo",
+      "id": "outercourse",
+      "category": "touch",
       "label": "Outercourse / unclothed rubbing / frottage"
     },
 
     {
-      "id": "itemTwo",
+      "id": "genitaltouching",
+      "category": "touch",
       "label": "External genital touching"
     },
 
     {
-      "id": "itemTwo",
+      "id": "frontholepenetration",
+      "category": "sex",
       "label": "Front hole penetration (fingers, toys)"
     },
 
     {
-      "id": "itemTwo",
+      "id": "analpenetration",
+      "category": "sex",
       "label": "Anal penetration (fingers, toys)"
     },
 
     {
-      "id": "itemTwo",
+      "id": "frontholefisting",
+      "category": "sex",
       "label": "Fisting (front hole)"
     },
     {
-      "id": "itemTwo",
+      "id": "analfisting",
+      "category": "sex",
       "label": "Anal Fisting"
     },
 
     {
-      "id": "itemTwo",
+      "id": "oralsex",
+      "category": "sex",
       "label": "Oral sex"
     },
 
     {
-      "id": "itemTwo",
+      "id": "rimming",
+      "category": "sex",
       "label": "Rimming"
     },
 
     {
-      "id": "itemTwo",
+      "id": "strapon",
+      "category": "sex",
       "label": "Strap-ons / dildos"
     },
 
     {
-      "id": "itemTwo",
+      "id": "packer",
+      "category": "toys / gear",
       "label": "Packers"
     },
 
     {
-      "id": "itemTwo",
+      "id": "vibrator",
+      "category": "toys / gear",
       "label": "Vibrators"
     },
 
     {
-      "id": "itemTwo",
+      "id": "stroker",
+      "category": "toys / gear",
       "label": "Strokers / masturbation sleeves"
     },
 
     {
-      "id": "itemTwo",
+      "id": "dp",
+      "category": "sex",
       "label": "Double penetration"
     },
 
     {
-      "id": "itemTwo",
+      "id": "tp",
+      "category": "sex",
       "label": "Triple penetration"
     },
 
     {
-      "id": "itemTwo",
+      "id": "gspot",
+      "category": "sex",
       "label": "G-spot stimulation"
     },
 
     {
-      "id": "itemTwo",
+      "id": "squirting",
+      "category": "sex",
       "label": "Squirting / ejaculation"
     },
 
     {
-      "id": "itemTwo",
+      "id": "masturbation",
+      "category": "sex",
       "label": "Masturbation"
     },
 
     {
-      "id": "itemTwo",
+      "id": "biting",
+      "category": "pain",
       "label": "Biting"
     },
 
     {
-      "id": "itemTwo",
+      "id": "hairpulling",
+      "category": "pain",
       "label": "Hair pulling"
     },
 
     {
-      "id": "itemTwo",
+      "id": "scratching",
+      "category": "sensation",
       "label": "Scratching"
     },
 
     {
-      "id": "itemTwo",
+      "id": "punching",
+      "category": "impact",
       "label": "Punching"
     },
 
     {
-      "id": "itemTwo",
+      "id": "slapping",
+      "category": "impact",
       "label": "Slapping"
     },
 
     {
-      "id": "itemTwo",
+      "id": "roughbody",
+      "category": "pain",
       "label": "Rough body play"
     },
 
     {
-      "id": "itemTwo",
+      "id": "spanking",
+      "category": "impact",
       "label": "Spanking"
     },
 
     {
-      "id": "itemTwo",
+      "id": "cuddling",
+      "category": "touch",
       "label": "Cuddling"
     },
 
     {
-      "id": "itemTwo",
+      "id": "blindfold",
+      "category": "bondage",
       "label": "Blindfolds"
     },
 
     {
-      "id": "itemTwo",
+      "id": "paint",
+      "category": "toys / gear",
       "label": "Body Paint"
     },
 
     {
-      "id": "itemTwo",
+      "id": "buttplug",
+      "category": "sex",
       "label": "Butt plugs"
     },
 
     {
-      "id": "itemTwo",
+      "id": "cage",
+      "category": "bondage",
       "label": "Cages"
     },
 
     {
-      "id": "itemTwo",
+      "id": "cane",
+      "category": "impact",
       "label": "Canes"
     },
 
     {
-      "id": "itemTwo",
+      "id": "chain",
+      "category": "bondage",
       "label": "Chains"
     },
 
     {
-      "id": "itemTwo",
+      "id": "clothespin",
+      "category": "pain",
       "label": "Clothespins"
     },
 
     {
-      "id": "itemTwo",
+      "id": "costume",
+      "category": "toys / gear",
       "label": "Clothing / Costumes / Lingerie"
     },
 
     {
-      "id": "itemTwo",
+      "id": "cuff",
+      "category": "bondage",
       "label": "Cuffs"
     },
 
     {
-      "id": "itemTwo",
+      "id": "gag",
+      "category": "bondage",
       "label": "Gags"
     },
 
     {
-      "id": "itemTwo",
+      "id": "wax",
+      "category": "sensation",
       "label": "Wax"
     },
 
     {
-      "id": "itemTwo",
+      "id": "ice",
+      "category": "sensation",
       "label": "Ice"
     },
 
     {
-      "id": "itemTwo",
+      "id": "leather",
+      "category": "toys / gear",
       "label": "Leather (clothing, restraints)"
     },
 
     {
-      "id": "itemTwo",
+      "id": "crop",
+      "category": "impact",
       "label": "Riding crops"
     },
 
     {
-      "id": "itemTwo",
+      "id": "rubber",
+      "category": "toys / gear",
       "label": "Rubber / latex"
     },
 
     {
-      "id": "itemTwo",
+      "id": "spreader",
+      "category": "toys / gear",
       "label": "Spreader bars"
     },
 
     {
-      "id": "itemTwo",
+      "id": "stim",
+      "category": "toys / gear",
       "label": "E-stim toys"
     },
 
     {
-      "id": "itemTwo",
+      "id": "whip",
+      "category": "impact",
       "label": "Whips"
     },
 
     {
-      "id": "itemTwo",
+      "id": "paddle",
+      "category": "impact",
       "label": "Paddles"
     },
 
     {
-      "id": "itemTwo",
+      "id": "collar",
+      "category": "bondage",
       "label": "Collars"
     },
 
     {
-      "id": "itemTwo",
+      "id": "hood",
+      "category": "bondage",
       "label": "Hoods"
     },
 
     {
-      "id": "itemTwo",
+      "id": "flogger",
+      "category": "impact",
       "label": "Floggers"
     },
 
     {
-      "id": "itemTwo",
+      "id": "clamp",
+      "category": "pain",
       "label": "Clamps"
     },
 
     {
-      "id": "itemTwo",
+      "id": "food",
+      "category": "sensation",
       "label": "Food"
     },
 
     {
-      "id": "itemTwo",
-      "label": "Impact"
+      "id": "impact",
+      "category": "impact",
+      "label": "Impact, general"
     },
 
     {
-      "id": "itemTwo",
+      "id": "wrestling",
+      "category": "dynamics",
       "label": "Wrestling"
     },
 
     {
-      "id": "itemTwo",
+      "id": "tickling",
+      "category": "sensation",
       "label": "Tickling"
     },
 
     {
-      "id": "itemTwo",
+      "id": "smoking",
+      "category": "sensation",
       "label": "Smoking"
     },
 
     {
-      "id": "itemTwo",
+      "id": "group",
+      "category": "dynamics",
       "label": "Group Play"
     },
 
     {
-      "id": "itemTwo",
+      "id": "powerexchange",
+      "category": "dynamics",
       "label": "Power Exchange"
     },
 
     {
-      "id": "itemTwo",
+      "id": "needle",
+      "category": "pain",
       "label": "Piercing / Needle Play"
     },
 
     {
-      "id": "itemTwo",
+      "id": "medical",
+      "category": "dynamics",
       "label": "Medical Play"
     },
 
     {
-      "id": "itemTwo",
+      "id": "punishment",
+      "category": "dynamics",
       "label": "Punishment"
     },
 
     {
-      "id": "itemTwo",
+      "id": "porn",
+      "category": "sex",
       "label": "Porn (watching)"
     },
 
     {
-      "id": "itemTwo",
+      "id": "party",
+      "category": "sex",
       "label": "Sex Parties"
     },
 
     {
-      "id": "itemTwo",
+      "id": "orgasmcontrol",
+      "category": "dynamics",
       "label": "Orgasm control"
     },
 
     {
-      "id": "itemTwo",
+      "id": "marks",
+      "category": "pain",
       "label": "Marks / Bruises"
     },
 
     {
-      "id": "itemTwo",
+      "id": "pissscat",
+      "category": "pain",
       "label": "Piss / Scat Play"
     },
 
     {
-      "id": "itemTwo",
+      "id": "blood",
+      "category": "pain",
       "label": "Blood Play"
     },
 
     {
-      "id": "itemTwo",
+      "id": "service",
+      "category": "dynamics",
       "label": "Service"
     },
 
     {
-      "id": "itemTwo",
+      "id": "teasing",
+      "category": "dynamics",
       "label": "Teasing"
     },
 
     {
-      "id": "itemTwo",
+      "id": "submission",
+      "category": "dynamics",
       "label": "Submission"
     },
 
     {
-      "id": "itemTwo",
+      "id": "domination",
+      "category": "dynamics",
       "label": "Domination"
     },
 
     {
-      "id": "itemTwo",
+      "id": "objectification",
+      "category": "dynamics",
       "label": "Objectification"
     },
 
     {
-      "id": "itemTwo",
-      "label": "Pain (levels?)"
+      "id": "pain",
+      "category": "pain",
+      "label": "Pain"
     },
 
     {
-      "id": "itemTwo",
+      "id": "role",
+      "category": "dynamics",
       "label": "Role Play"
     },
 
     {
-      "id": "itemTwo",
+      "id": "sensory",
+      "category": "sensation",
       "label": "Sensory Play / Sensory Deprivation"
     },
 
     {
-      "id": "itemTwo",
+      "id": "brat",
+      "category": "dynamics",
       "label": "Brattiness"
     },
 
     {
-      "id": "itemTwo",
+      "id": "cuckold",
+      "category": "dynamics",
       "label": "Cuckolding"
     },
 
     {
-      "id": "itemTwo",
+      "id": "talk",
+      "category": "sex",
       "label": "Dirty Talk"
     },
 
     {
-      "id": "itemTwo",
+      "id": "kidnapping",
+      "category": "dynamics",
       "label": "Kidnapping"
     },
 
     {
-      "id": "itemTwo",
+      "id": "interrogation",
+      "category": "dynamics",
       "label": "Interrogation"
     },
 
     {
-      "id": "itemTwo",
+      "id": "ageplay",
+      "category": "dynamics",
       "label": "Ageplay"
     },
 
     {
-      "id": "itemTwo",
+      "id": "breath",
+      "category": "bondage",
       "label": "Breath Play"
     },
 
     {
-      "id": "itemTwo",
+      "id": "cnc",
+      "category": "dynamics",
       "label": "Consensual Non-Consent"
     },
 
     {
-      "id": "itemTwo",
+      "id": "chastity",
+      "category": "bondage",
       "label": "Chastity"
     },
 
     {
-      "id": "itemTwo",
+      "id": "picture",
+      "category": "sex",
       "label": "Sexy Pictures"
     },
 
     {
-      "id": "itemTwo",
+      "id": "video",
+      "category": "sex",
       "label": "Sexy Videos"
     },
 
     {
-      "id": "itemTwo",
+      "id": "voyeur",
+      "category": "dynamics",
       "label": "Voyeurism"
     },
 
     {
-      "id": "itemTwo",
+      "id": "exhibition",
+      "category": "dynamics",
       "label": "Exhibitionism"
     },
 
     {
-      "id": "itemTwo",
+      "id": "furry",
+      "category": "dynamics",
       "label": "Furry Play"
     },
 
     {
-      "id": "itemTwo",
+      "id": "humiliation",
+      "category": "dynamics",
       "label": "Humiliation"
     },
 
     {
-      "id": "itemTwo",
+      "id": "degradation",
+      "category": "dynamics",
       "label": "Degradation"
     },
 
     {
-      "id": "itemTwo",
+      "id": "bodyworship",
+      "category": "sex",
       "label": "Body / Genital Worship"
     },
 
     {
-      "id": "itemTwo",
+      "id": "bondage",
+      "category": "bondage",
       "label": "Bondage / Restraint"
     },
 
     {
-      "id": "itemTwo",
+      "id": "incest",
+      "category": "dynamics",
       "label": "Incest Roleplay"
     },
 
     {
-      "id": "itemTwo",
+      "id": "knife",
+      "category": "pain",
       "label": "Knife Play"
     },
 
     {
-      "id": "itemTwo",
+      "id": "foot",
+      "category": "sensation",
       "label": "Foot Play"
     },
 
     {
-      "id": "itemTwo",
+      "id": "bootblacking",
+      "category": "dynamics",
       "label": "Boot Blacking"
     },
 
     {
-      "id": "itemTwo",
+      "id": "bootworship",
+      "category": "dynamics",
+      "label": "Boot Worship"
+    },
+
+    {
+      "id": "saran",
+      "category": "bondage",
       "label": "Saran Wrapping"
     },
 
     {
-      "id": "itemTwo",
+      "id": "orders",
+      "category": "dynamics",
       "label": "Following Orders"
     },
 
     {
-      "id": "itemTwo",
+      "id": "eyecontact",
+      "category": "dynamics",
       "label": "Eye Contact"
     },
 
     {
-      "id": "itemTwo",
+      "id": "sissy",
+      "category": "dynamics",
       "label": "Feminization / Sissification"
     },
 
     {
-      "id": "itemTwo",
+      "id": "massage",
+      "category": "touch",
       "label": "Massage"
     },
 
     {
-      "id": "itemTwo",
+      "id": "magic",
+      "category": "dynamics",
       "label": "Sex Magic / Spirituality"
     },
 
     {
-      "id": "itemTwo",
+      "id": "gender",
+      "category": "dynamics",
       "label": "Gender Play"
     },
 
     {
-      "id": "itemTwo",
+      "id": "longdistance",
+      "category": "sex",
       "label": "Long-Distance Sex (phone, video call)"
     },
 
     {
-      "id": "itemTwo",
+      "id": "sexting",
+      "category": "sex",
       "label": "Sexting"
-    }
+    },
+
+    {
+      "id": "rope",
+      "category": "bondage",
+      "label": "Rope"
+    },
+    
+
+    {
+        "id": "ropesuspension",
+        "category": "bondage",
+        "label": "Rope Suspension"
+    },
+
+    {
+      "id": "pet",
+      "category": "dynamics",
+      "label": "Pet / Pony / Puppy Play"
+    } 
+
   ]
 }
