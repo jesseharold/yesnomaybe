@@ -2,7 +2,7 @@
   <section id="items">
       <!-- labels row -->
     <div class="row columns column-labels">
-        <div class="column activity">activity</div>
+        <div class="column activity"></div>
         <div class="column" :class="column.id" v-for="column in columns" v-bind:key="column.id">
             {{ column.label }}
         </div>
@@ -15,7 +15,7 @@
             <div class="item column">{{ item.label }}</div>
             <div class="item column" :class="column.id" v-for="column in columns" v-bind:key="column.id">
                 <Slider v-if="!column.inputType" :name="item.id + '_' + column.id" />
-                <textarea rows="3" v-if="column.inputType === 'text'" />
+                <textarea rows="3" v-if="column.inputType === 'text'" placeholder="Notes" />
             </div>
         </div>
     </div>
@@ -85,6 +85,9 @@ export default {
     display: flex;
     justify-content: space-between;
 }
+.collapsed .category-title {
+    color: #999;
+}
 .category-toggle {
     background-color: #dff7d7;
     border: 1px solid #9c2ea3;
@@ -107,6 +110,19 @@ export default {
 }
 .column.notes {
     width: 30%;
+    flex-basis: auto;
+}
+@media screen and (max-width:800px) {
+    .columns {
+        flex-wrap: wrap;
+    }
+    .column {
+        width: 20%;
+    }
+    .column.notes {
+        margin-top: 20px;
+        width: 100%;
+    }
 }
 textarea {
     width: 100%;
