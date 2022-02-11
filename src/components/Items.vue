@@ -81,6 +81,11 @@ export default {
     top: 0;
     background-color: white;
 }
+@media print {
+    .row.column-labels {
+        position: relative;
+    }
+}
 .category-title {
     display: flex;
     justify-content: space-between;
@@ -97,6 +102,17 @@ export default {
 .category-toggle:hover {
     background-color: rgb(11, 121, 110);
     color: white;
+}
+@media print {
+    .category-toggle {
+        display: none;
+    }
+    .category-title {
+        justify-content: center;
+    }
+    .collapsed .category-title {
+        display: none;
+    }
 }
 .category-container.collapsed .row {
     display: none;

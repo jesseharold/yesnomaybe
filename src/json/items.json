@@ -343,7 +343,7 @@
 
     {
       "id": "powerexchange",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Power Exchange"
     },
 
@@ -361,7 +361,7 @@
 
     {
       "id": "punishment",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Punishment"
     },
 
@@ -379,7 +379,7 @@
 
     {
       "id": "orgasmcontrol",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Orgasm control"
     },
 
@@ -409,25 +409,25 @@
 
     {
       "id": "teasing",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Teasing"
     },
 
     {
       "id": "submission",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Submission"
     },
 
     {
       "id": "domination",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Domination"
     },
 
     {
       "id": "objectification",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Objectification"
     },
 
@@ -475,7 +475,7 @@
 
     {
       "id": "interrogation",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Interrogation"
     },
 
@@ -493,7 +493,7 @@
 
     {
       "id": "cnc",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Consensual Non-Consent"
     },
 
@@ -517,13 +517,13 @@
 
     {
       "id": "voyeur",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Voyeurism"
     },
 
     {
       "id": "exhibition",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Exhibitionism"
     },
 
@@ -535,13 +535,13 @@
 
     {
       "id": "humiliation",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Humiliation"
     },
 
     {
       "id": "degradation",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Degradation"
     },
 
@@ -601,7 +601,7 @@
 
     {
       "id": "eyecontact",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Eye Contact"
     },
 
@@ -619,7 +619,7 @@
 
     {
       "id": "magic",
-      "category": "dynamics",
+      "category": "psychological",
       "label": "Sex Magic / Spirituality"
     },
 
@@ -658,6 +658,24 @@
       "id": "pet",
       "category": "dynamics",
       "label": "Pet / Pony / Puppy Play"
+    } ,
+
+    {
+      "id": "masculinelanguage",
+      "category": "language",
+      "label": "Masculine-coded language (Boy / handsome / Daddy, dick, etc.)"
+    } ,
+
+    {
+      "id": "femininelanguage",
+      "category": "language",
+      "label": "Feminine-coded language (Girl, pretty, Mommy, tits, etc.)"
+    } ,
+
+    {
+      "id": "neutrallanguage",
+      "category": "language",
+      "label": "Gender neutral language"
     } 
 
   ]

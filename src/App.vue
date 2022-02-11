@@ -1,6 +1,6 @@
 <template>
   <section>
-    <img alt="Vue logo" src="./assets/logo.png">
+    <img class="logo" alt="YesNoMaybe logo" src="./assets/logo.png">
     <Intro msg="Welcome to YesNoMaybe" />
     
     <Items />
@@ -28,5 +28,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+@media print {
+  .logo, .hello {
+    display: none;
+  }
 }
 </style>
