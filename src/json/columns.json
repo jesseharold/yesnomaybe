@@ -1,0 +1,21 @@
+{
+    "columns": [
+        {
+            "id": "giving",
+            "label": "giving"
+        },
+        {
+            "id": "receiving",
+            "label": "receiving"
+        },
+        {
+            "id": "experience",
+            "label": "previous experience"
+        },
+        {
+            "id": "notes",
+            "label": "notes",
+            "inputType": "text"
+        }
+    ]
+}
