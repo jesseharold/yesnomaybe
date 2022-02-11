@@ -1,5 +1,8 @@
 # yesnomaybe
-a web-based, customizable yes-no-maybe list for sharing
+a web-based, customizable yes-no-maybe list for sharing. 
+
+Content warning: this is a tool used for having conversations to build consent between adults for sex and or kink. This app contains sexually explicit language, and is meant as an educational tool.
+
 https://yesnomaybe.netlify.app/
 
 ## Todo

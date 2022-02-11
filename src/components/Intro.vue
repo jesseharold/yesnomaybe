@@ -1,7 +1,10 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    
+    <p>
+      Content warning: this is a tool used for having conversations to build consent between adults for sex 
+      and/or kink. This app contains sexually explicit language, and is meant as an educational tool.
+    </p>
   </div>
 </template>
 
