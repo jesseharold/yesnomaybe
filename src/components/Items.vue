@@ -167,15 +167,14 @@ export default {
     }
     .category-title {
         justify-content: center;
+        border: 1px solid #000;
+        padding: 10px 0;
     }
     .collapsed .category-title {
         display: none;
     }
-    button.new-item {
-        display: none;
-    }
-    button.new-category {
-        display: none;
+    .add-custom {
+        display: none !important;
     }
 }
 .category-container.collapsed .row {
