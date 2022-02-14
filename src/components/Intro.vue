@@ -6,12 +6,18 @@
         This is a tool used for having conversations to build consent between adults for sex 
         and/or kink. This app contains sexually explicit language, and is meant as an educational tool.
       </p>
+      <h4>Using this app</h4>
+      <p>
+        For privacy reasons, this site does not collect, store, or retain any of your information. <strong>If you refresh the page,
+        the form will be reset to blank</strong> and you will lose your work. (There may be the option in the future to save your work 
+        privately and edit it later, or compare two lists, but at this time, printing is the only way to save.)
+      </p>
       <h4>Sharing your list</h4> 
       <p>
-        This site does not collect, store, or retain any of your information. To share your list after you filled it out, 
+        To share your list after you fill it out, 
         make sure all the sections you want to share are shown, and then <b>Print</b> this page, either on paper, or
-        print to a PDF and save it. You might want to write your name or initial and the date on it before sharing, so you
-        you don't get them mixed up! :)
+        print to a PDF and save it. You might want to write your name or initial on it, so you
+        you don't get them mixed up!
       </p>
       <h4>Consent and negotiation</h4> 
       <p>
