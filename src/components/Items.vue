@@ -9,8 +9,8 @@
     </div>
     <div v-for="category in categories" v-bind:key="category" class="category-container" :class="categoryVisibility[category] ? '' : 'collapsed'">
         <!-- categories -->
-        <h2 class="category-title">{{ category }}
-            <button class="category-toggle" :name="categoryVisibility[category] ? 'close' : 'open'" @click="toggleCategory(category)">{{ categoryVisibility[category] ? 'X' : 'V'}}</button>
+        <h2 class="category-title" @click="toggleCategory(category)">{{ category }}
+            <button class="category-toggle" :name="categoryVisibility[category] ? 'close' : 'open'">{{ categoryVisibility[category] ? 'X' : 'V'}}</button>
         </h2>
         <!-- item rows -->
         <div class="row columns" v-for="item in itemsInCategory(category)" v-bind:key="item.id">
@@ -91,11 +91,13 @@ export default {
 .category-title {
     display: flex;
     justify-content: flex-start;
+    cursor: pointer;
 }
 .collapsed .category-title {
     color: #999;
 }
 .category-toggle {
+    cursor: pointer;
     background-color: #eee;
     margin: 5px 20px;
     border: 0;

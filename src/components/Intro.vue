@@ -10,7 +10,17 @@
       <p>
         This site does not collect, store, or retain any of your information. To share your list after you filled it out, 
         make sure all the sections you want to share are shown, and then <b>Print</b> this page, either on paper, or
-        print to a PDF and save it.
+        print to a PDF and save it. You might want to write your name or initial and the date on it before sharing, so you
+        you don't get them mixed up! :)
+      </p>
+      <h4>Consent and negotiation</h4> 
+      <p>
+        Sit with another person, check and see where you have overlapping yeses or maybes, and talk about 
+        what it might look like to do it together! <b>If someone has a "no" for any item, it does not need 
+        to be discussed.</b> If someone hasn't set a value for an item, it's up to you if you are open to 
+        talking about it. Revisit your list periodically, as people's desire and openness changes all the time.
+        There are lots of great resources out there <a href="https://www.rainn.org/articles/what-is-consent" 
+        target="_blank">about consent</a>, please review them periodically, too! 
       </p>
   </div>
 </template>

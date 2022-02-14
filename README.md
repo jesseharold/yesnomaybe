@@ -6,10 +6,7 @@ Content warning: this is a tool used for having conversations to build consent b
 https://yesnomaybe.netlify.app/
 
 ## Todo
-- ability to print to PDF
-- add categories to items and headers to list
-- make categories collapsible
-- place to put your name/initial and date on it
+- ability to save to PDF?
 - intro text about consent, how to use
 ## Project setup
 ```
