@@ -90,7 +90,7 @@ export default {
             str = str.replace(/^\s+|\s+$/g, ""); // trim
               str = str.toLowerCase();
 
-            // remove special characters
+            // substitute special characters
             var from = "åàáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
             var to = "aaaaaaeeeeiiiioooouuuunc------";
 

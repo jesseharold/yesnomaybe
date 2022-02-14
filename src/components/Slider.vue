@@ -1,8 +1,8 @@
 <template>
   <div :class="classObject" class="slider-container">
-    <div class="slider-label">{{ labelsObject[value] }}</div>
     <input type="range" min="-1" max="3" v-model="value" class="slider" 
      :name="'slider_' + name" />
+    <div class="slider-label">{{ labelsObject[value] }}</div>
   </div>
 </template>
 
@@ -53,7 +53,10 @@ export default {
 
 <style scoped>
 .slider {
-  display: none;
+  /* hide the slider, but keep them in the tab order */
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
@@ -70,13 +73,22 @@ export default {
   border: 0;
   border-radius: 50%;
   background-color: #ccc;
-  /* todo: use fun svgs for interest levels */
-  /* background: url("data:image/svg+xml,<svg width='40' height='40' viewBox='0 0 63 63' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='5.05025' y='31.2134' width='37' height='37' rx='18.5' transform='rotate(-45 5.05025 31.2134)' fill='%23FF9675' stroke='white' stroke-width='7'/><path d='M31.3357 40.8633L31.3357 22.0019' stroke='%231D1D1D' stroke-width='2' stroke-miterlimit='10'/><path d='M38.67 26.334C32.3829 26.334 31.335 18.999 31.335 18.999C31.335 18.999 30.2871 26.334 24 26.334' stroke='%231D1D1D' stroke-width='2' stroke-miterlimit='10' stroke-linejoin='bevel'/><path d='M38.67 35.5283C32.3829 35.5283 31.335 42.8633 31.335 42.8633C31.335 42.8633 30.2871 35.5283 24 35.5283' stroke='%231D1D1D' stroke-width='2' stroke-miterlimit='10' stroke-linejoin='bevel'/></svg>"); */
   cursor: pointer;
 } 
 
 .slider-container:hover .slider {
-  display: block;
+  opacity: 1;
+  position: relative;
+  z-index: unset;
+}
+/* unhide the sliders when they are tabbed to */
+.slider-container .slider:focus {
+  opacity: 1;
+  position: relative;
+  z-index: unset;
+}
+.slider:focus + .slider-label {
+  display: none;
 }
 .slider-container:hover .slider-label {
   display: none;

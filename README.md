@@ -6,8 +6,9 @@ Content warning: this is a tool used for having conversations to build consent b
 https://yesnomaybe.netlify.app/
 
 ## Todo
-- ability to save to PDF?
-- intro text about consent, how to use
+- ability to save to json file, and upload/re-dit
+- ability to comare two lists, only show yes/maybe overlaps
+
 ## Project setup
 ```
 npm install
