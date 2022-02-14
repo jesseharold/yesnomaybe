@@ -20,6 +20,16 @@
                 <textarea rows="3" v-if="column.inputType === 'text'" placeholder="Notes" />
             </div>
         </div>
+        <!-- add new item to this category -->
+        <div class="add-custom row columns">
+            <input type="text" class="column" maxlength="40" v-model="newCustomName">
+            <button class="new-item column" @click="addItem(newCustomName, category)">Add item to {{ category }}</button>
+        </div>
+    </div>
+    <!-- add new category -->
+    <div class="add-custom row columns">
+        <input type="text" class="column" maxlength="40" v-model="newCategoryName">
+        <button class="new-item new-category column" @click="addCategory(newCategoryName)">Add new category</button>
     </div>
   </section>
 </template>
@@ -39,7 +49,9 @@ export default {
         columns: columnData.columns,
         // gets all unique category values defined in the data
         categories: [...new Set(itemData.items.map(item => item.category))],
-        categoryVisibility: this.setDefaultCategoryVisibility()
+        categoryVisibility: this.setDefaultCategoryVisibility(),
+        newCustomName: '',
+        newCategoryName: ''
     }
   },
   methods: {
@@ -47,6 +59,8 @@ export default {
             return this.alphabetize(this.items.filter(item => item.category === category))
         },
         toggleCategory(category) {
+            // clear any abandoned custom item
+            this.newCustomName = ''
             this.categoryVisibility[category] = !this.categoryVisibility[category]
         },
         setDefaultCategoryVisibility() {
@@ -59,12 +73,50 @@ export default {
                 var itemB = b.label.toUpperCase()
                 return (itemA < itemB) ? -1 : (itemA > itemB) ? 1 : 0
             })
+        },
+        addItem(name, categoryName) {
+            this.newCustomName = ''
+            if (this.categories.indexOf(categoryName) === -1) {
+                this.addCategory(categoryName)
+            }
+            const newItem = {
+                id: "custom-" + this.slugify(name),
+                category: categoryName,
+                label: name
+            }
+            this.items.push(newItem)
+        },
+        slugify(str) {
+            str = str.replace(/^\s+|\s+$/g, ""); // trim
+              str = str.toLowerCase();
+
+            // remove special characters
+            var from = "åàáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
+            var to = "aaaaaaeeeeiiiioooouuuunc------";
+
+            for (var i = 0, l = from.length; i < l; i++) {
+                str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
+            }
+
+            str = str
+                .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
+                .replace(/\s+/g, "-") // collapse whitespace and replace by -
+                .replace(/-+/g, "-") // collapse dashes
+                .replace(/^-+/, "") // trim - from start of text
+                .replace(/-+$/, ""); // trim - from end of text
+
+            return str;
+        },
+        addCategory(name) {
+            this.newCustomName = ''
+            this.categories.push(name)
         }
   },
 }
 </script>
 
 <style scoped>
+/* rows */
 #items {
     max-width: 1024px;
     margin: 30px auto;
@@ -88,6 +140,8 @@ export default {
         position: relative;
     }
 }
+
+/* categories */
 .category-title {
     display: flex;
     justify-content: flex-start;
@@ -117,10 +171,18 @@ export default {
     .collapsed .category-title {
         display: none;
     }
+    button.new-item {
+        display: none;
+    }
+    button.new-category {
+        display: none;
+    }
 }
 .category-container.collapsed .row {
     display: none;
 }
+
+/* columns */
 .columns {
     display: flex;
     justify-content: space-evenly;
@@ -154,5 +216,31 @@ textarea {
 }
 .column-labels {
     font-weight: bold;
+}
+
+/* add new item forms */
+.collapsed button.new-item {
+    display: none;
+}
+.add-custom input {
+    width: 65%;
+    min-width: 300px;
+    height: 30px;
+    margin-top: 30px;
+}
+@media screen and (max-width:800px) {
+    .add-custom input {
+        margin-top: 0;
+    }
+}
+.add-custom button {
+    width: 100%;
+    max-width: 300px;
+    margin: 30px 10px;
+    padding: 10px;
+    background-color: #fdd5ff;
+}
+.add-custom button:hover {
+    background-color: #f999ff;
 }
 </style>
