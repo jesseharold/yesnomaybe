@@ -12,7 +12,7 @@
         <h2 class="category-title">{{ category }} <button class="category-toggle" @click="toggleCategory(category)">{{ categoryVisibility[category] ? 'Hide' : 'Show'}} this category</button></h2>
         <!-- item rows -->
         <div class="row columns" v-for="item in itemsInCategory(category)" v-bind:key="item.id">
-            <div class="item column">{{ item.label }}</div>
+            <div class="item column activity">{{ item.label }}</div>
             <div class="item column" :class="column.id" v-for="column in columns" v-bind:key="column.id">
                 <Slider v-if="!column.inputType" :name="item.id + '_' + column.id" />
                 <textarea rows="3" v-if="column.inputType === 'text'" placeholder="Notes" />
@@ -138,6 +138,11 @@ export default {
     .column.notes {
         margin-top: 20px;
         width: 100%;
+    }
+    .column.activity {
+        flex-basis: auto;
+        width: 100%;
+        margin-bottom: 20px;
     }
 }
 textarea {

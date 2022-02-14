@@ -29,6 +29,9 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.logo {
+  max-width: 100%;
+}
 @media print {
   .logo, .hello {
     display: none;
