@@ -7,7 +7,7 @@ https://yesnomaybe.netlify.app/
 
 ## Todo
 - ability to save to json file, and upload/re-dit
-- ability to comare two lists, only show yes/maybe overlaps
+- ability to compare two lists, only show yes/maybe overlaps
 
 ## Project setup
 ```
