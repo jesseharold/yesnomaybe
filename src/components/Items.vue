@@ -17,7 +17,7 @@
             <div class="item column activity">{{ item.label }}</div>
             <div class="item column" :class="column.id" v-for="column in columns" v-bind:key="column.id">
                 <Slider v-if="!column.inputType" :name="item.id + '_' + column.id" />
-                <textarea rows="3" v-if="column.inputType === 'text'" placeholder="Notes" />
+                <div v-if="column.inputType === 'text'" class="notes-field" contenteditable="true" placeholder="Notes" />
             </div>
         </div>
         <!-- add new item to this category -->
@@ -108,7 +108,7 @@ export default {
             return str;
         },
         addCategory(name) {
-            this.newCustomName = ''
+            this.newCategoryName = ''
             this.categories.push(name)
         }
   },
@@ -135,10 +135,21 @@ export default {
     top: 0;
     background-color: white;
 }
-@media print {
-    .row.column-labels {
-        position: relative;
-    }
+
+/* notes column */
+.notes-field {
+    background-color: white;
+    border: 1px solid #aaa;
+    min-height: 100%;
+    text-align: left;
+    padding: 1px 3px;
+}
+.notes-field:empty::before {
+    content: 'Notes';
+    color: #aaa; 
+}
+.notes-field:empty:focus::before {
+    content: '';
 }
 
 /* categories */
@@ -160,22 +171,6 @@ export default {
 .category-toggle:hover {
     background-color: #ddd;
     color: #222;
-}
-@media print {
-    .category-toggle {
-        display: none;
-    }
-    .category-title {
-        justify-content: center;
-        border: 1px solid #000;
-        padding: 10px 0;
-    }
-    .collapsed .category-title {
-        display: none;
-    }
-    .add-custom {
-        display: none !important;
-    }
 }
 .category-container.collapsed .row {
     display: none;
@@ -210,9 +205,6 @@ export default {
         margin-bottom: 20px;
     }
 }
-textarea {
-    width: 100%;
-}
 .column-labels {
     font-weight: bold;
 }
@@ -241,5 +233,38 @@ textarea {
 }
 .add-custom button:hover {
     background-color: #f999ff;
+}
+
+/* print styles */
+
+@media print {
+    .category-toggle {
+        display: none;
+    }
+    .category-title {
+        justify-content: center;
+        border: 1px solid #000;
+        padding: 10px 0;
+        break-inside: avoid;
+    }
+    .category-container > .row {
+        border-bottom: 2px solid #999;
+        break-inside: avoid;
+    }
+    .collapsed .category-title {
+        display: none;
+    }
+    .add-custom {
+        display: none !important;
+    }
+    .row.column-labels {
+        position: relative;
+    }
+    .notes-field {
+        border: 0;
+    }
+    .notes-field:empty::before {
+        content: '';
+    }
 }
 </style>
