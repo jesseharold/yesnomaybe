@@ -742,6 +742,30 @@
       "id": "stomping",
       "category": "impact",
       "label": "Stomping"
+    },
+
+    {
+      "id": "feet-touch",
+      "category": "touch",
+      "label": "Foot Touching, Kissing"
+    },
+
+    {
+      "id": "neck-touch",
+      "category": "touch",
+      "label": "Neck Touching, Kissing"
+    },
+
+    {
+      "id": "ass-touch",
+      "category": "touch",
+      "label": "Ass Touching, Groping"
+    },
+
+    {
+      "id": "compression",
+      "category": "sensation",
+      "label": "Body Compression"
     }
 
   ]
