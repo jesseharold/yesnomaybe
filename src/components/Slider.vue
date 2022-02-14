@@ -91,11 +91,14 @@ export default {
   padding-top: 5px;
 }
 
+.no .slider {
+  background-color: rgb(95, 38, 108);
+}
 .no .slider::-webkit-slider-thumb {
-  background-color: rgb(115, 0, 48);
+  background-color: rgb(95, 38, 108);
 }
 .no .slider-label {
-  background-color: rgb(115, 0, 48);
+  background-color: rgb(95, 38, 108);
   color: #fff;
 }
 @media print {
@@ -104,24 +107,33 @@ export default {
   }
 }
 
+.maybe .slider {
+  background-color: #fad334;
+}
 .maybe .slider::-webkit-slider-thumb {
-  background-color: rgb(255, 255, 22);
+  background-color: #fad334;
 }
 .maybe .slider-label {
-  background-color: rgb(255, 255, 22);
+  background-color: #fad334;
 }
 
+.yes .slider {
+  background-color: rgb(92, 236, 180);
+}
 .yes .slider::-webkit-slider-thumb {
-  background-color: rgb(129, 203, 157);
+  background-color: rgb(92, 236, 180);
 }
 .yes .slider-label {
-  background-color: rgb(129, 203, 157);
+  background-color: rgb(92, 236, 180);
 }
 
+.high-yes .slider {
+  background-color: rgb(13, 255, 0);
+}
 .high-yes .slider::-webkit-slider-thumb {
-  background-color: rgb(0, 255, 98);
+  background-color: rgb(13, 255, 0);
 }
 .high-yes .slider-label {
-  background-color: rgb(0, 255, 98);
+  background-color: rgb(13, 255, 0);
 }
 </style>

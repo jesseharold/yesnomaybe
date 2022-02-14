@@ -546,6 +546,36 @@
     },
 
     {
+      "id": "care",
+      "category": "psychological",
+      "label": "Care"
+    },
+
+    {
+      "id": "worship",
+      "category": "psychological",
+      "label": "Worship"
+    },
+
+    {
+      "id": "ignored",
+      "category": "psychological",
+      "label": "Being Ignored"
+    },
+
+    {
+      "id": "tortured",
+      "category": "psychological",
+      "label": "Being Tortured"
+    },
+
+    {
+      "id": "impossible",
+      "category": "psychological",
+      "label": "Being Asked to do the Impossible"
+    },
+
+    {
       "id": "bodyworship",
       "category": "sex",
       "label": "Body / Genital Worship"
@@ -606,6 +636,12 @@
     },
 
     {
+      "id": "praise",
+      "category": "psychological",
+      "label": "Praise"
+    },
+
+    {
       "id": "sissy",
       "category": "dynamics",
       "label": "Feminization / Sissification"
@@ -658,25 +694,55 @@
       "id": "pet",
       "category": "dynamics",
       "label": "Pet / Pony / Puppy Play"
-    } ,
+    },
 
     {
       "id": "masculinelanguage",
       "category": "language",
       "label": "Masculine-coded language (Boy / handsome / Daddy, dick, etc.)"
-    } ,
+    },
 
     {
       "id": "femininelanguage",
       "category": "language",
       "label": "Feminine-coded language (Girl, pretty, Mommy, tits, etc.)"
-    } ,
+    },
 
     {
       "id": "neutrallanguage",
       "category": "language",
       "label": "Gender neutral language"
-    } 
+    },
+
+    {
+      "id": "degradinglanguage",
+      "category": "language",
+      "label": "Degrading language"
+    },
+
+    {
+      "id": "lovinglanguage",
+      "category": "language",
+      "label": "Loving language"
+    },
+
+    {
+      "id": "explicitlanguage",
+      "category": "language",
+      "label": "Explicit language"
+    },
+
+    {
+      "id": "title",
+      "category": "language",
+      "label": "Special names or titles, (e.g. Sir, babygirl, etc.)"
+    },
+
+    {
+      "id": "stomping",
+      "category": "impact",
+      "label": "Stomping"
+    }
 
   ]
 }

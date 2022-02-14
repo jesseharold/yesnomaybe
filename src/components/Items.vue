@@ -9,7 +9,9 @@
     </div>
     <div v-for="category in categories" v-bind:key="category" class="category-container" :class="categoryVisibility[category] ? '' : 'collapsed'">
         <!-- categories -->
-        <h2 class="category-title">{{ category }} <button class="category-toggle" @click="toggleCategory(category)">{{ categoryVisibility[category] ? 'Hide' : 'Show'}} this category</button></h2>
+        <h2 class="category-title">{{ category }}
+            <button class="category-toggle" :name="categoryVisibility[category] ? 'close' : 'open'" @click="toggleCategory(category)">{{ categoryVisibility[category] ? 'X' : 'V'}}</button>
+        </h2>
         <!-- item rows -->
         <div class="row columns" v-for="item in itemsInCategory(category)" v-bind:key="item.id">
             <div class="item column activity">{{ item.label }}</div>
@@ -88,20 +90,20 @@ export default {
 }
 .category-title {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 .collapsed .category-title {
     color: #999;
 }
 .category-toggle {
-    background-color: #dff7d7;
-    border: 1px solid #9c2ea3;
-    color: #9c2ea3;
-    border-radius: 5px;
+    background-color: #eee;
+    margin: 5px 20px;
+    border: 0;
+    color: #444;
 }
 .category-toggle:hover {
-    background-color: rgb(11, 121, 110);
-    color: white;
+    background-color: #ddd;
+    color: #222;
 }
 @media print {
     .category-toggle {
