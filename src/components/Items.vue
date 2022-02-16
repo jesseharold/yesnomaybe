@@ -7,29 +7,58 @@
             {{ column.label }}
         </div>
     </div>
-    <div v-for="category in categories" v-bind:key="category" class="category-container" :class="categoryVisibility[category] ? '' : 'collapsed'">
+    <div v-for="category in categorizedItems" v-bind:key="category[0].category" class="category-container" :class="categoryOpen[category[0].category] ? '' : 'collapsed'">
         <!-- categories -->
-        <h2 class="category-title" @click="toggleCategory(category)">{{ category }}
-            <button class="category-toggle" :name="categoryVisibility[category] ? 'close' : 'open'">{{ categoryVisibility[category] ? 'X' : 'V'}}</button>
+        <h2 class="category-title" @click="toggleCategory(category[0].category)">{{ category[0].category }}
+            <button class="category-toggle hide-print" :name="categoryOpen[category[0].category] ? 'close' : 'open'">
+                {{ categoryOpen[category[0].category] ? 'X' : 'V'}}
+            </button>
         </h2>
         <!-- item rows -->
-        <div class="row columns" v-for="item in itemsInCategory(category)" v-bind:key="item.id">
+        <div class="row columns" v-for="item in category" v-bind:key="item.id">
             <div class="item column activity">{{ item.label }}</div>
             <div class="item column" :class="column.id" v-for="column in columns" v-bind:key="column.id">
-                <Slider v-if="!column.inputType" :name="item.id + '_' + column.id" />
-                <div v-if="column.inputType === 'text'" class="notes-field" contenteditable="true" placeholder="Notes" />
+                <Slider 
+                    v-if="!column.inputType" 
+                    :name="item.id + '_' + column.id" 
+                    @change="(e) => setValue(item.id, column.id, e.target.value)" />
+                <div 
+                    v-if="column.inputType === 'text'" 
+                    class="notes-field" 
+                    :name="item.id + '_' + column.id" 
+                    contenteditable="true" 
+                    placeholder="Notes" 
+                    @keypress="(e) => setValue(item.id, column.id, e.target.innerHTML)" />
             </div>
         </div>
         <!-- add new item to this category -->
-        <div class="add-custom row columns">
+        <div class="add-custom hide-print row columns hide-print">
             <input type="text" class="column" maxlength="40" v-model="newCustomName">
-            <button class="new-item column" @click="addItem(newCustomName, category)">Add item to {{ category }}</button>
+            <button class="new-item column" @click="addItem(newCustomName, category[0].category)">Add item to {{ category[0].category }}</button>
         </div>
     </div>
     <!-- add new category -->
-    <div class="add-custom row columns">
+    <div class="add-custom hide-print row columns">
         <input type="text" class="column" maxlength="40" v-model="newCategoryName">
         <button class="new-item new-category column" @click="addCategory(newCategoryName)">Add new category</button>
+    </div>
+    <div class="control-panel hide-print">
+        <a 
+            :href="dataString" 
+            :download="'ynm-' + new Date().getTime() + '.json'" 
+            class="save-button" 
+            @click="generateJson">
+                Save to file (json)
+        </a>
+    </div>
+    <div class="control-panel hide-print">
+        <textarea
+            ref="loadFromJson"
+            id="loadFromJson" 
+            name="loadFromJson"
+            cols="100" rows="4" 
+            placeholder="open your .json file in a plain text editor and paste it in here" />
+        <button @click="loadJson">Load saved from file</button>
     </div>
   </section>
 </template>
@@ -37,6 +66,7 @@
 <script>
 import itemData from '../json/items.json'
 import columnData from '../json/columns.json'
+import util from '../util/util.js'
 import Slider from '../components/Slider.vue'
 export default {
   name: 'Items',
@@ -45,71 +75,76 @@ export default {
   },
   data() {
     return {
-        items: itemData.items,
+        items: util.alphabetize(itemData.items, 'category'),
+        categoryOpen: [],
         columns: columnData.columns,
-        // gets all unique category values defined in the data
-        categories: [...new Set(itemData.items.map(item => item.category))],
-        categoryVisibility: this.setDefaultCategoryVisibility(),
         newCustomName: '',
         newCategoryName: ''
     }
   },
+  computed: {
+    dataString() {
+        return "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.items))
+    },
+    categorizedItems() {
+        // make categories the top level key
+       const categorized = this.items.reduce(function (r, a) {
+            r[a.category] = r[a.category] || [];
+            r[a.category].push(a);
+            return r;
+        }, Object.create(null));
+        
+        // alphabetize items within each category
+        const categorizedAndSorted = {}
+        for (const cat in categorized) {
+            if (Object.hasOwnProperty.call(categorized, cat)) {
+                categorizedAndSorted[cat] = util.alphabetize(categorized[cat], 'label')
+            }
+        }
+        return categorizedAndSorted
+    }
+  },
+  mounted() {
+      this.categoryOpen = this.setInitialCategoryVis()
+  },
   methods: {
-        itemsInCategory(category) {
-            return this.alphabetize(this.items.filter(item => item.category === category))
+        setInitialCategoryVis() {
+            const uniqueCategoryNames = Object.keys(this.categorizedItems)
+            const sortedCategories =  util.alphabetize(uniqueCategoryNames)
+            return sortedCategories.reduce(function(o, val) { o[val] = false; return o; }, {})
         },
-        toggleCategory(category) {
+        toggleCategory(categoryName) {
             // clear any abandoned custom item
             this.newCustomName = ''
-            this.categoryVisibility[category] = !this.categoryVisibility[category]
+            this.categoryOpen[categoryName] = !this.categoryOpen[categoryName]
         },
-        setDefaultCategoryVisibility() {
-            const cats = [...new Set(itemData.items.map(item => item.category))]
-            return cats.reduce((o, key) => ({ ...o, [key]: false}), {})
+        setValue(id, column, value) {
+            const item = this.items.filter(itm => itm.id === id)[0]
+            item[column] = value
         },
-        alphabetize(array) {
-            return array.sort(function(a, b) {
-                var itemA = a.label.toUpperCase()
-                var itemB = b.label.toUpperCase()
-                return (itemA < itemB) ? -1 : (itemA > itemB) ? 1 : 0
-            })
+        loadJson() {
+            const rawText = this.$refs['loadFromJson'].value
+            const json = JSON.parse(rawText)
+            console.log(json)
+            this.items = json
+            console.log(this.items)
         },
         addItem(name, categoryName) {
             this.newCustomName = ''
-            if (this.categories.indexOf(categoryName) === -1) {
+            if (!this.categoryOpen[categoryName] && this.categoryOpen[categoryName] !== false) {
                 this.addCategory(categoryName)
             }
             const newItem = {
-                id: "custom-" + this.slugify(name),
+                id: "custom-" + util.slugify(name),
                 category: categoryName,
                 label: name
             }
             this.items.push(newItem)
         },
-        slugify(str) {
-            str = str.replace(/^\s+|\s+$/g, ""); // trim
-              str = str.toLowerCase();
-
-            // substitute special characters
-            var from = "åàáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
-            var to = "aaaaaaeeeeiiiioooouuuunc------";
-
-            for (var i = 0, l = from.length; i < l; i++) {
-                str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
-            }
-
-            str = str
-                .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
-                .replace(/\s+/g, "-") // collapse whitespace and replace by -
-                .replace(/-+/g, "-") // collapse dashes
-                .replace(/^-+/, "") // trim - from start of text
-                .replace(/-+$/, ""); // trim - from end of text
-
-            return str;
-        },
         addCategory(name) {
             this.newCategoryName = ''
-            this.categories.push(name)
+            this.categoryOpen[name] = true
+            this.addItem(name, name)
         }
   },
 }
@@ -235,10 +270,16 @@ export default {
     background-color: #f999ff;
 }
 
-/* print styles */
+.control-panel {
+    display: none;
+}
 
+/* print styles */
 @media print {
-    .category-toggle {
+    .hide-print {
+        display: none !important;
+    }
+    .collapsed .category-title {
         display: none;
     }
     .category-title {
@@ -250,12 +291,6 @@ export default {
     .category-container > .row {
         border-bottom: 2px solid #999;
         break-inside: avoid;
-    }
-    .collapsed .category-title {
-        display: none;
-    }
-    .add-custom {
-        display: none !important;
     }
     .row.column-labels {
         position: relative;

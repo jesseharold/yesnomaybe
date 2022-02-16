@@ -43,7 +43,7 @@ export default {
 <style scoped>
 .hello {
     max-width: 1024px;
-    margin: 30px auto;
+    margin: 0 auto;
 }
 h3 {
   margin: 40px 0 0;
