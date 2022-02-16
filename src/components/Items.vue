@@ -7,11 +7,15 @@
             {{ column.label }}
         </div>
     </div>
-    <div v-for="category in categorizedItems" v-bind:key="category[0].category" class="category-container" :class="categoryOpen[category[0].category] ? '' : 'collapsed'">
+    <div 
+        v-for="category in categorizedItems" 
+        v-bind:key="getName(category)" 
+        class="category-container" 
+        :class="getVis(category) ? '' : 'collapsed'">
         <!-- categories -->
-        <h2 class="category-title" @click="toggleCategory(category[0].category)">{{ category[0].category }}
-            <button class="category-toggle hide-print" :name="categoryOpen[category[0].category] ? 'close' : 'open'">
-                {{ categoryOpen[category[0].category] ? 'X' : 'V'}}
+        <h2 class="category-title" @click="toggleCategory(getName(category))">{{ getName(category) }}
+            <button class="category-toggle hide-print" :name="getVis(category) ? 'close' : 'open'">
+                {{ getVis(category) ? 'X' : 'V'}}
             </button>
         </h2>
         <!-- item rows -->
@@ -20,21 +24,23 @@
             <div class="item column" :class="column.id" v-for="column in columns" v-bind:key="column.id">
                 <Slider 
                     v-if="!column.inputType" 
-                    :name="item.id + '_' + column.id" 
+                    :name="item.id + '_' + column.id"
+                    :value="item[column.id]"
                     @change="(e) => setValue(item.id, column.id, e.target.value)" />
                 <div 
                     v-if="column.inputType === 'text'" 
+                    v-text="item.notes || ''"
                     class="notes-field" 
-                    :name="item.id + '_' + column.id" 
+                    :name="item.id + '_' + column.id"
                     contenteditable="true" 
                     placeholder="Notes" 
-                    @keypress="(e) => setValue(item.id, column.id, e.target.innerHTML)" />
+                    @keypress="(e) => setValue(item.id, column.id, e.target.innerText)" />
             </div>
         </div>
         <!-- add new item to this category -->
         <div class="add-custom hide-print row columns hide-print">
             <input type="text" class="column" maxlength="40" v-model="newCustomName">
-            <button class="new-item column" @click="addItem(newCustomName, category[0].category)">Add item to {{ category[0].category }}</button>
+            <button class="new-item column" @click="addItem(newCustomName, getName(category))">Add item to {{ getName(category) }}</button>
         </div>
     </div>
     <!-- add new category -->
@@ -48,17 +54,17 @@
             :download="'ynm-' + new Date().getTime() + '.json'" 
             class="save-button" 
             @click="generateJson">
-                Save to file (json)
+                Download to file
         </a>
     </div>
     <div class="control-panel hide-print">
         <textarea
-            ref="loadFromJson"
+            v-model="loadJsonText"
             id="loadFromJson" 
             name="loadFromJson"
             cols="100" rows="4" 
-            placeholder="open your .json file in a plain text editor and paste it in here" />
-        <button @click="loadJson">Load saved from file</button>
+            placeholder="open your ynm.json file in a *plain text editor* and paste it here" />
+        <button class="load-button" :class="canLoad ? 'enabled' : 'disabled'" @click="loadJson">Load saved from file</button>
     </div>
   </section>
 </template>
@@ -75,16 +81,17 @@ export default {
   },
   data() {
     return {
-        items: util.alphabetize(itemData.items, 'category'),
+        rawItems: itemData.items,
         categoryOpen: [],
         columns: columnData.columns,
         newCustomName: '',
-        newCategoryName: ''
+        newCategoryName: '',
+        loadJsonText: ''
     }
   },
   computed: {
-    dataString() {
-        return "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.items))
+    items() {
+        return util.alphabetize(this.rawItems, 'category')
     },
     categorizedItems() {
         // make categories the top level key
@@ -102,6 +109,12 @@ export default {
             }
         }
         return categorizedAndSorted
+    },
+    dataString() {
+        return "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.items))
+    },
+    canLoad() {
+        return this.loadJsonText && this.loadJsonText.length > 0
     }
   },
   mounted() {
@@ -118,16 +131,21 @@ export default {
             this.newCustomName = ''
             this.categoryOpen[categoryName] = !this.categoryOpen[categoryName]
         },
+        getName(cat) {
+            return cat[0].category
+        },
+        getVis(cat) {
+            return this.categoryOpen[cat[0].category]
+        },
         setValue(id, column, value) {
             const item = this.items.filter(itm => itm.id === id)[0]
             item[column] = value
         },
         loadJson() {
-            const rawText = this.$refs['loadFromJson'].value
-            const json = JSON.parse(rawText)
-            console.log(json)
-            this.items = json
-            console.log(this.items)
+            if (!this.canLoad) {
+                return
+            }
+            this.rawItems = JSON.parse(this.loadJsonText)
         },
         addItem(name, categoryName) {
             this.newCustomName = ''
@@ -271,7 +289,33 @@ export default {
 }
 
 .control-panel {
-    display: none;
+    margin-top: 100px;
+}
+.control-panel + .control-panel {
+    margin-top: 0;
+}
+.save-button, .load-button {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: cornflowerblue;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    text-decoration: none;
+    cursor: pointer;
+}
+.control-panel .load-button {
+    display: block;
+    margin: 5px auto;
+}
+.control-panel .load-button.disabled {
+    background-color: #aaa;
+    cursor: auto;
+}
+#loadFromJson {
+    margin-top: 30px;
 }
 
 /* print styles */

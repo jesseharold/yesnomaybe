@@ -9,8 +9,9 @@
       <h4>Using this app</h4>
       <p>
         For privacy reasons, this site does not collect, store, or retain any of your information. <strong>If you refresh the page,
-        the form will be reset to blank</strong> and you will lose your work. (There may be the option in the future to save your work 
-        privately and edit it later, or compare two lists, but at this time, printing is the only way to save.)
+        the form will be reset to blank</strong>. You can privately save your sheet as a .json file using 
+        the "Download to file" button at the bottom. Load your sheet later by pasting the contents of the file in to the field at the 
+        bottom of the page as plain text (don't use MS Word).
       </p>
       <h4>Sharing your list</h4> 
       <p>
@@ -27,6 +28,12 @@
         talking about it. Revisit your list periodically, as people's desire and openness changes all the time.
         There are lots of great resources out there <a href="https://www.rainn.org/articles/what-is-consent" 
         target="_blank">about consent</a>, please review them periodically, too! 
+      </p>
+      <h4>Credits</h4>
+      <p>
+        App designed and coded by <a href="https://github.com/jesseharold" target="_blank">jesseharold</a>. With content and inspiration from sex educators like <a href="http://www.bextalkssex.com/" target="_blank">Bex Caputo</a>, 
+        <a href="http://www.thatotherpaper.com/austin/yes_no_maybe" target="_blank">RC McCloud</a>, <a href="https://www.scarleteen.com/article/advice/yes_no_maybe_so_a_sexual_inventory_stocklist" target="_blank">and</a> 
+        &nbsp;<a href="https://drive.google.com/file/d/1nGtucisumva0kOXggAWH9Y4JEHLl0ts5/view" target="_blank">others</a>.
       </p>
   </div>
 </template>

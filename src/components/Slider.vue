@@ -1,8 +1,8 @@
 <template>
   <div :class="classObject" class="slider-container">
-    <input type="range" min="-1" max="3" v-model="value" class="slider" 
+    <input type="range" min="-1" max="3" v-model="sliderValue" class="slider" 
      :name="'slider_' + name" />
-    <div class="slider-label">{{ labelsObject[value] }}</div>
+    <div class="slider-label">{{ labelsObject[sliderValue] }}</div>
   </div>
 </template>
 
@@ -11,22 +11,21 @@
 export default {
   name: 'Slider',
   props: {
-    name: String
-  },
-  data() {
-    return {
-      value: 0
-    }
+    name: String,
+    value: String,
   },
   computed: {
+    sliderValue() {
+        return this.value || "0"
+    },
     classObject() {
       return {
         ['slider_' + this.name]: true,
-        'no': this.value == -1,
-        'unset': this.value == 0,
-        'maybe': this.value == 1,
-        'yes': this.value == 2,
-        'high-yes': this.value == 3,
+        'no': this.sliderValue == "-1",
+        'unset': this.sliderValue == "0",
+        'maybe': this.sliderValue == "1",
+        'yes': this.sliderValue == "2",
+        'high-yes': this.sliderValue == "3",
       }
     },
     labelsObject() {
