@@ -16,7 +16,8 @@
       <h4>Sharing your list</h4> 
       <p>
         To share your list after you fill it out, 
-        make sure all the sections you want to share are shown, and then <b>Print</b> this page, either on paper, or
+        make sure all the categories you want to include are expanded, closed categories will not appear on your list.
+        <b>Print</b> this page, either on paper, or
         print to a PDF and save it. (it looks best if you turn background colors on in your PDF print settings.) You
         can also email someone your ynm.txt file, and they can upload it into the app to view it.
       </p>
