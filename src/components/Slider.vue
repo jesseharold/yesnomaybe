@@ -19,6 +19,16 @@ export default {
         return this.value || "0"
     },
     classObject() {
+      if (this.name.indexOf('_experience') > 0) {
+        return {
+          ['slider_' + this.name]: true,
+          'no-exp': this.sliderValue == "-1",
+          'unset': this.sliderValue == "0",
+          'little-exp': this.sliderValue == "1",
+          'yes-exp': this.sliderValue == "2",
+          'high-exp': this.sliderValue == "3",
+        }
+      }
       return {
         ['slider_' + this.name]: true,
         'no': this.sliderValue == "-1",
@@ -58,7 +68,6 @@ export default {
   z-index: -1;
   -webkit-appearance: none;
   appearance: none;
-  width: 100%;
   height: 10px;
   margin-top: 10px;
   background: #d3d3d3;
@@ -103,13 +112,13 @@ export default {
 }
 
 .no .slider {
-  background-color: rgb(95, 38, 108);
+  background-color: rgb(85, 11, 11);
 }
 .no .slider::-webkit-slider-thumb {
-  background-color: rgb(95, 38, 108);
+  background-color: rgb(85, 11, 11);
 }
 .no .slider-label {
-  background-color: rgb(95, 38, 108);
+  background-color: rgb(85, 11, 11);
   color: #fff;
 }
 @media print {
@@ -147,4 +156,47 @@ export default {
 .high-yes .slider-label {
   background-color: rgb(13, 255, 0);
 }
+
+.no-exp .slider {
+  background-color: white;
+}
+.no-exp .slider::-webkit-slider-thumb {
+  background-color: white;
+}
+.no-exp .slider-label {
+  background-color: white;
+}
+
+.little-exp .slider {
+  background-color: rgb(172, 227, 247);
+}
+.little-exp .slider::-webkit-slider-thumb {
+  background-color: rgb(172, 227, 247);
+}
+.little-exp .slider-label {
+  background-color: rgb(172, 227, 247);
+}
+
+.yes-exp .slider {
+  background-color: rgb(91, 189, 225);
+}
+.yes-exp .slider::-webkit-slider-thumb {
+  background-color: rgb(91, 189, 225);
+}
+.yes-exp .slider-label {
+  background-color: rgb(91, 189, 225);
+  color: white;
+}
+
+.high-exp .slider {
+  background-color: rgb(0, 135, 184);
+}
+.high-exp .slider::-webkit-slider-thumb {
+  background-color: rgb(0, 135, 184);
+}
+.high-exp .slider-label {
+  background-color: rgb(0, 135, 184);
+  color: white;
+}
+
 </style>
