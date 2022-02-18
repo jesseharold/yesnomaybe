@@ -2,7 +2,9 @@
   <section id="items">
       <!-- labels row -->
     <div class="row columns column-labels">
-        <div class="column activity"></div>
+        <div class="column activity">
+            <button class="toggle-button hide-print" @click="openAllCategories">Open all</button>
+            <button class="toggle-button hide-print" @click="closeAllCategories">Close all</button></div>
         <div class="column" :class="column.id" v-for="column in columns" v-bind:key="column.id">
             {{ column.label }}
         </div>
@@ -15,12 +17,15 @@
         <!-- categories -->
         <h2 class="category-title" @click="toggleCategory(getName(category))">{{ getName(category) }}
             <button class="category-toggle hide-print" :name="getVis(category) ? 'close' : 'open'">
-                {{ getVis(category) ? 'X' : 'V'}}
+                {{ getVis(category) ? '^' : 'V'}}
             </button>
         </h2>
         <!-- item rows -->
         <div class="row columns" v-for="item in category" v-bind:key="item.id">
-            <div class="item column activity">{{ item.label }}</div>
+            <div class="item column activity">
+                <button class="remove-button hide-print" @click="removeItem(item.id)">X</button>
+                {{ item.label }}
+            </div>
             <div class="item column" :class="column.id" v-for="column in columns" v-bind:key="column.id">
                 <Slider 
                     v-if="!column.inputType" 
@@ -124,6 +129,16 @@ export default {
             const sortedCategories =  util.alphabetize(uniqueCategoryNames)
             return sortedCategories.reduce(function(o, val) { o[val] = false; return o; }, {})
         },
+        closeAllCategories() {
+            for (const cat in this.categoryOpen) {
+                this.categoryOpen[cat] = false
+            }
+        },
+        openAllCategories() {
+            for (const cat in this.categoryOpen) {
+                this.categoryOpen[cat] = true
+            }
+        },
         toggleCategory(categoryName) {
             // clear any abandoned custom item
             this.newCustomName = ''
@@ -156,6 +171,15 @@ export default {
             this.categoryOpen[name] = true
             this.addItem(name, name)
         },
+        removeItem(itemid) {
+            console.log("remove ", itemid)
+            for( var i = 0; i < this.items.length; i++){                    
+                if ( this.items[i].id === itemid) { 
+                    this.items.splice(i, 1); 
+                    i--; 
+                }
+            }
+        },
         getDataString(e) {
             e.stopPropagation()
             // stringify and obscure current data
@@ -177,6 +201,7 @@ export default {
             }
             this.rawItems = JSON.parse(util.deobfuscate(this.loadJsonText))
             this.loadJsonText = ''
+            this.openAllCategories()
         }
   },
 }
@@ -190,6 +215,7 @@ export default {
 }
 .row {
     padding: 10px;
+    position: relative;
 }
 .row:nth-child(even) {
     background: rgb(221, 255, 254);
@@ -217,6 +243,19 @@ export default {
 }
 .notes-field:empty:focus::before {
     content: '';
+}
+.remove-button {
+    position: absolute;
+    cursor: pointer;
+    left: 2px;
+    top: 2px;
+    font-size: 10px;
+    border: 1px solid #bbb;
+    padding: 2px 3px;
+}
+.remove-button:hover {
+    background-color: #666;
+    color: #ccc;
 }
 
 /* categories */
@@ -308,7 +347,7 @@ export default {
 .control-panel + .control-panel {
     margin-top: 0;
 }
-.save-button, .load-button {
+.save-button, .load-button, .toggle-button {
     display: inline-block;
     margin: 20px auto;
     padding: 10px;
@@ -319,6 +358,17 @@ export default {
     font-size: large;
     text-decoration: none;
     cursor: pointer;
+}
+
+.save-button:hover, .load-button:hover, .toggle-button:hover {
+    opacity: .7;
+}
+.toggle-button {
+    display: inline;
+    margin: 5px;
+    padding: 5px;
+    font-weight: 400;
+    font-size: 14px;
 }
 .control-panel .load-button {
     display: block;
