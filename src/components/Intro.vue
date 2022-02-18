@@ -9,7 +9,7 @@
       <h4>Using this app</h4>
       <p>
         For privacy reasons, this site does not collect, store, or retain any of your information. <strong>If you refresh the page,
-        the form will be reset to blank</strong>. You can privately save your sheet as a .json file using 
+        the form will be reset to blank</strong>. You can privately save your sheet as a .txt file using 
         the "Download to file" button at the bottom. Load your sheet later by pasting the contents of the file in to the field at the 
         bottom of the page as plain text (don't use MS Word).
       </p>
@@ -17,8 +17,8 @@
       <p>
         To share your list after you fill it out, 
         make sure all the sections you want to share are shown, and then <b>Print</b> this page, either on paper, or
-        print to a PDF and save it. You might want to write your name or initial on it, so you
-        you don't get them mixed up!
+        print to a PDF and save it. (it looks best if you turn background colors on in your PDF print settings.) You
+        can also email someone your ynm.txt file, and they can upload it into the app to view it.
       </p>
       <h4>Consent and negotiation</h4> 
       <p>

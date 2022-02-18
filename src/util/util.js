@@ -30,7 +30,32 @@ const alphabetize = function(array, key) {
     })
 }
 
+
+// use a non-linear Caesar cipher to make the downloaded json unreadable
+// ** this is not an encoding, and isn't secure **, it's just less awkward
+// if your mom opens your downloaded file
+// thanks to https://medium.com/@TimSeverien/substitution-cipher-in-javascript-d530eb2d923d
+const cipherRotate = function(text, key, reverse) {
+    var bound = 0x10000;
+
+    return String.fromCharCode.apply(null,
+        text.split('').map(function(v, i) {
+            var rotation = key[i % key.length].charCodeAt()
+            if(reverse) rotation = -rotation
+            return (v.charCodeAt() + rotation + bound) % bound
+        })
+    )
+}
+const obfuscate = function (text) {
+    return cipherRotate(text, "organDonorBrotherGangStrikesAgain");
+}
+const deobfuscate = function (encoded) {
+    return cipherRotate(encoded, "organDonorBrotherGangStrikesAgain", true);
+}
+
 export default {
     slugify,
     alphabetize,
+    obfuscate,
+    deobfuscate
 }

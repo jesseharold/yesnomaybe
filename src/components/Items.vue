@@ -50,10 +50,10 @@
     </div>
     <div class="control-panel hide-print">
         <a 
-            :href="dataString" 
-            :download="'ynm-' + new Date().getTime() + '.json'" 
-            class="save-button" 
-            @click="generateJson">
+            :href="textFile" 
+            :download="'ynm-' + new Date().getTime() + '.txt'" 
+            class="save-button"
+            @click="getDataString" >
                 Download to file
         </a>
     </div>
@@ -63,7 +63,7 @@
             id="loadFromJson" 
             name="loadFromJson"
             cols="100" rows="4" 
-            placeholder="open your ynm.json file in a *plain text editor* and paste it here" />
+            placeholder="open your ynm.txt file in a *plain text editor* and paste it here" />
         <button class="load-button" :class="canLoad ? 'enabled' : 'disabled'" @click="loadJson">Load saved from file</button>
     </div>
   </section>
@@ -86,7 +86,8 @@ export default {
         columns: columnData.columns,
         newCustomName: '',
         newCategoryName: '',
-        loadJsonText: ''
+        loadJsonText: '',
+        textFile: null
     }
   },
   computed: {
@@ -109,9 +110,6 @@ export default {
             }
         }
         return categorizedAndSorted
-    },
-    dataString() {
-        return "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.items))
     },
     canLoad() {
         return this.loadJsonText && this.loadJsonText.length > 0
@@ -141,12 +139,6 @@ export default {
             const item = this.items.filter(itm => itm.id === id)[0]
             item[column] = value
         },
-        loadJson() {
-            if (!this.canLoad) {
-                return
-            }
-            this.rawItems = JSON.parse(this.loadJsonText)
-        },
         addItem(name, categoryName) {
             this.newCustomName = ''
             if (!this.categoryOpen[categoryName] && this.categoryOpen[categoryName] !== false) {
@@ -163,6 +155,28 @@ export default {
             this.newCategoryName = ''
             this.categoryOpen[name] = true
             this.addItem(name, name)
+        },
+        getDataString(e) {
+            e.stopPropagation()
+            // stringify and obscure current data
+            const unreadableData = util.obfuscate(JSON.stringify(this.items))
+            // create text blob
+            const data = new Blob([unreadableData], {type: 'text/plain'});
+            // If we are replacing a previously generated file we need to
+            // manually revoke the object URL to avoid memory leaks.
+            if (this.textFile !== null) {
+                window.URL.revokeObjectURL(this.textFile);
+            }
+            // generate text file
+            // returns a URL you can use as a href
+            this.textFile = window.URL.createObjectURL(data);
+        },
+        loadJson() {
+            if (!this.canLoad) {
+                return
+            }
+            this.rawItems = JSON.parse(util.deobfuscate(this.loadJsonText))
+            this.loadJsonText = ''
         }
   },
 }
