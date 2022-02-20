@@ -43,13 +43,13 @@
             </div>
         </div>
         <!-- add new item to this category -->
-        <div class="add-custom hide-print row columns hide-print">
+        <div class="add-custom hide-print row columns">
             <input type="text" class="column" maxlength="40" v-model="newCustomName">
             <button class="new-item column" @click="addItem(newCustomName, getName(category))">Add item to {{ getName(category) }}</button>
         </div>
     </div>
     <!-- add new category -->
-    <div class="add-custom hide-print row columns">
+    <div class="add-custom add-custom-category hide-print row columns">
         <input type="text" class="column" maxlength="40" v-model="newCategoryName">
         <button class="new-item new-category column" @click="addCategory(newCategoryName)">Add new category</button>
     </div>
@@ -250,8 +250,8 @@ export default {
     cursor: pointer;
     background-color: transparent;
     color: #999;
-    left: -20px;
-    top: -5px;
+    left: -10px;
+    top: -10px;
     font-size: 10px;
     border: 1px solid #bbb;
     padding: 2px 3px;
@@ -261,12 +261,15 @@ export default {
     color: #ccc;
 }
 @media screen and (max-width:800px) {
-    .remove-button {
-        left: -5px;
+    .remove-button{
+        top: -20px;
     }
 }
 
 /* categories */
+.category-container {
+    margin-bottom: 40px;
+}
 .category-title {
     display: flex;
     justify-content: flex-start;
@@ -298,27 +301,25 @@ export default {
 }
 .column {
     position: relative;
-    width: 15%;
+    flex-basis: 10%;
+    flex-grow: 1;
+    padding: 0 5px;
+}
+.column.activity {
+    flex-basis: 25%;
+    max-width: 200px;
 }
 .column.notes {
-    width: 30%;
-    flex-basis: auto;
+    flex-basis: 35%;
 }
 @media screen and (max-width:800px) {
     .columns {
         flex-wrap: wrap;
     }
-    .column {
-        width: 30%;
-    }
-    .column.notes {
-        margin-top: 20px;
-        width: 100%;
-    }
-    .column.activity {
-        flex-basis: auto;
-        width: 100%;
-        margin-bottom: 20px;
+    .column.activity, .column.notes {
+        max-width: unset;
+        flex-basis: 100%;
+        margin: 10px 0;
     }
 }
 .column-labels {
@@ -329,14 +330,17 @@ export default {
 .collapsed button.new-item {
     display: none;
 }
+.add-custom.add-custom-category {
+    background-color: #cee9d6;
+} 
 .add-custom input {
-    width: 65%;
-    min-width: 300px;
+    flex-basis: 65%;
     height: 30px;
     margin-top: 30px;
 }
 @media screen and (max-width:800px) {
     .add-custom input {
+        flex-basis: 100%;
         margin-top: 0;
     }
 }

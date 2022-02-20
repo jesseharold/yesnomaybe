@@ -61,6 +61,9 @@ export default {
 </script>
 
 <style scoped>
+.slider-container {
+  width: 100%;
+}
 .slider {
   /* hide the slider, but keep them in the tab order */
   opacity: 0;
