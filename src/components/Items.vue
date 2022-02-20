@@ -39,7 +39,7 @@
                     :name="item.id + '_' + column.id"
                     contenteditable="true" 
                     placeholder="Notes" 
-                    @keypress="(e) => setValue(item.id, column.id, e.target.innerText)" />
+                    @keyup="(e) => setValue(item.id, column.id, e.target.innerText)" />
             </div>
         </div>
         <!-- add new item to this category -->
