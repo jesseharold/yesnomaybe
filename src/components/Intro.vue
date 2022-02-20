@@ -13,13 +13,25 @@
         the "Download to file" button at the bottom. Load your sheet later by pasting the contents of the file in to the field at the 
         bottom of the page as plain text (don't use MS Word).
       </p>
+      <p>
+        You can collapse any category or delete any item you don't wish to fill out, or just leave it in the
+        blank state that each row starts in, which simply indicates no response.
+      </p>
       <h4>Sharing your list</h4> 
       <p>
-        To share your list after you fill it out, 
+        To share your list with someone after you fill it out separately, 
         make sure all the categories you want to include are expanded, closed categories will not appear on your list.
         <b>Print</b> this page, either on paper, or
         print to a PDF and save it. (it looks best if you turn background colors on in your PDF print settings.) You
         can also email someone your ynm.txt file, and they can upload it into the app to view it.
+      </p>
+      <h4>Filling it out together (alternate use)</h4> 
+      <p>
+        Traditionally, these lists are filled out separately, to give everyone time and space to think without
+        pressure. But if you prefer to fill this out together with another person, rename the first two columns
+        to be "[name of person 1] receiving" and rename the second column to be "[name of person 2] receiving".
+        Then go through the list and agree together on a shared level of interest in each person receiving each item.
+        If you have different interest levels, the lower of the two should be used. "No"s from anyone should be recorded as no.
       </p>
       <h4>Consent and negotiation</h4> 
       <p>

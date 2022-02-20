@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Intro from './components/Intro.vue'
-import Items from './components/Items.vue'
+import Intro from './components/Intro'
+import Items from './components/Items'
 
 export default {
   name: 'App',

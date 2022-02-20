@@ -6,6 +6,18 @@
             <button class="toggle-button hide-print" @click="openAllCategories">Open all</button>
             <button class="toggle-button hide-print" @click="closeAllCategories">Close all</button></div>
         <div class="column" :class="column.id" v-for="column in columns" v-bind:key="column.id">
+            <button 
+                v-if="column.id === 'experience'" 
+                title="Delete this Column" 
+                class="remove-button hide-print" 
+                @click="removeExperienceColumn()">X</button>
+            <button 
+                v-if="column.id !== 'experience' && column.id !== 'notes'" 
+                title="Rename this Column" 
+                class="remove-button rename-button hide-print" 
+                @click="renameColumn(column.id)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 25 25"><path fill="#aaa" d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z"/></svg>
+            </button>
             {{ column.label }}
         </div>
     </div>
@@ -16,14 +28,14 @@
         :class="getVis(category) ? '' : 'collapsed'">
         <!-- categories -->
         <h2 class="category-title" @click="toggleCategory(getName(category))">{{ getName(category) }}
-            <button class="category-toggle hide-print" :name="getVis(category) ? 'close' : 'open'">
+            <button class="category-toggle hide-print" title="Expand/Close this Category" :name="getVis(category) ? 'close' : 'open'">
                 {{ getVis(category) ? '^' : 'V'}}
             </button>
         </h2>
         <!-- item rows -->
         <div class="row columns" v-for="item in category" v-bind:key="item.id">
             <div class="item column activity">
-                <button class="remove-button hide-print" @click="removeItem(item.id)">X</button>
+                <button class="remove-button hide-print" title="Delete this Row" @click="removeItem(item.id)">X</button>
                 {{ item.label }}
             </div>
             <div class="item column" :class="column.id" v-for="column in columns" v-bind:key="column.id">
@@ -77,8 +89,8 @@
 <script>
 import itemData from '../json/items.json'
 import columnData from '../json/columns.json'
-import util from '../util/util.js'
-import Slider from '../components/Slider.vue'
+import util from '../util/util'
+import Slider from '../components/Slider'
 export default {
   name: 'Items',
   components: {
@@ -180,6 +192,14 @@ export default {
                 }
             }
         },
+        removeExperienceColumn(){
+            this.columns = this.columns.filter(col => col.id !== 'experience')
+        },
+        renameColumn(colId) {
+            const thisCol = this.columns.filter(col => col.id === colId)[0];
+            const input = prompt("Rename '" + colId + "' column to:")
+            thisCol.label = input
+        },
         getDataString(e) {
             e.stopPropagation()
             // stringify and obscure current data
@@ -245,6 +265,15 @@ export default {
 .notes-field:empty:focus::before {
     content: '';
 }
+.column-labels .remove-button {
+    right: -5px;
+    left: unset;
+    top: -10px;
+}
+.column-labels .remove-button.rename-button {
+    border: 0;
+}
+
 .remove-button {
     position: absolute;
     cursor: pointer;
@@ -331,7 +360,7 @@ export default {
     display: none;
 }
 .add-custom.add-custom-category {
-    background-color: #cee9d6;
+    background-color: #565b96;
 } 
 .add-custom input {
     flex-basis: 65%;
