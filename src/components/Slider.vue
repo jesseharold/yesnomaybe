@@ -108,6 +108,8 @@ export default {
   width: 100%;
   height: 30px;
   padding-top: 5px;
+  /* prevents layout shift when it's in focus */
+  border: 2px solid transparent;
 }
 
 .no .slider {

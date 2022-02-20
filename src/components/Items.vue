@@ -403,7 +403,7 @@ export default {
     cursor: pointer;
 }
 
-.save-button:hover, .load-button:hover, .toggle-button:hover {
+.save-button:hover, .load-button:not(.disabled):hover, .toggle-button:hover {
     opacity: .7;
 }
 .toggle-button {
