@@ -269,6 +269,10 @@ export default {
     right: -5px;
     left: unset;
     top: -10px;
+    display: none;
+}
+.column-labels .column:hover .remove-button {
+    display: block;
 }
 .column-labels .remove-button.rename-button {
     border: 0;
@@ -353,6 +357,12 @@ export default {
 }
 .column-labels {
     font-weight: bold;
+}
+.row.column-labels .activity {
+    text-align: left;
+    padding-left: 0;
+    margin-left: -10px;
+    margin-right: 10px;
 }
 
 /* add new item forms */
