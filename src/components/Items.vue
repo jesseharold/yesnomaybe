@@ -247,6 +247,7 @@ export default {
     position: sticky;
     z-index: 100;
     top: 0;
+    align-items: center;
     background-color: white;
 }
 
