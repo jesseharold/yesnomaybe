@@ -802,6 +802,18 @@
       "id": "suctiondevice",
       "category": "toys / gear",
       "label": "Suction device / enlarger"
+    },
+
+    {
+      "id": "coercivelanguage",
+      "category": "language",
+      "label": "Coercive language"
+    },
+
+    {
+      "id": "commandinglanguage",
+      "category": "language",
+      "label": "Commanding language"
     }
 
   ]
