@@ -225,6 +225,7 @@ export default {
 }
 .row.column-labels {
     position: sticky;
+    z-index: 100;
     top: 0;
     background-color: white;
 }
@@ -247,8 +248,10 @@ export default {
 .remove-button {
     position: absolute;
     cursor: pointer;
-    left: 2px;
-    top: 2px;
+    background-color: transparent;
+    color: #999;
+    left: -20px;
+    top: -5px;
     font-size: 10px;
     border: 1px solid #bbb;
     padding: 2px 3px;
@@ -257,12 +260,18 @@ export default {
     background-color: #666;
     color: #ccc;
 }
+@media screen and (max-width:800px) {
+    .remove-button {
+        left: -5px;
+    }
+}
 
 /* categories */
 .category-title {
     display: flex;
     justify-content: flex-start;
     cursor: pointer;
+    width: fit-content;
 }
 .collapsed .category-title {
     color: #999;
@@ -288,6 +297,7 @@ export default {
     justify-content: space-evenly;
 }
 .column {
+    position: relative;
     width: 15%;
 }
 .column.notes {
@@ -299,7 +309,7 @@ export default {
         flex-wrap: wrap;
     }
     .column {
-        width: 20%;
+        width: 30%;
     }
     .column.notes {
         margin-top: 20px;
@@ -380,6 +390,7 @@ export default {
 }
 #loadFromJson {
     margin-top: 30px;
+    max-width: 100%;
 }
 
 /* print styles */

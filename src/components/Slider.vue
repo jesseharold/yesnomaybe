@@ -65,6 +65,8 @@ export default {
   /* hide the slider, but keep them in the tab order */
   opacity: 0;
   position: absolute;
+  left: 0;
+  width: 100%;
   z-index: -1;
   -webkit-appearance: none;
   appearance: none;
@@ -89,17 +91,11 @@ export default {
   position: relative;
   z-index: unset;
 }
-/* unhide the sliders when they are tabbed to */
-.slider-container .slider:focus {
-  opacity: 1;
-  position: relative;
-  z-index: unset;
-}
-.slider:focus + .slider-label {
-  display: none;
-}
 .slider-container:hover .slider-label {
   display: none;
+}
+.slider-container .slider:focus ~ .slider-label {
+  border: 2px solid blue;
 }
 
 .slider-label {
@@ -159,12 +155,15 @@ export default {
 
 .no-exp .slider {
   background-color: white;
+  border: 1px solid #aaa;
 }
 .no-exp .slider::-webkit-slider-thumb {
   background-color: white;
+  border: 1px solid #aaa;
 }
 .no-exp .slider-label {
   background-color: white;
+  border: 1px solid #aaa;
 }
 
 .little-exp .slider {

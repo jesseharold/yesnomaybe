@@ -116,7 +116,13 @@
     {
       "id": "masturbation",
       "category": "sex",
-      "label": "Masturbation"
+      "label": "Mutual Masturbation"
+    },
+
+    {
+      "id": "masturbation-watch",
+      "category": "sex",
+      "label": "Watching Masturbation"
     },
 
     {
@@ -212,7 +218,7 @@
     {
       "id": "costume",
       "category": "toys / gear",
-      "label": "Clothing / Costumes / Lingerie"
+      "label": "Costumes / Lingerie"
     },
 
     {
@@ -308,13 +314,7 @@
     {
       "id": "food",
       "category": "sensation",
-      "label": "Food"
-    },
-
-    {
-      "id": "impact",
-      "category": "impact",
-      "label": "Impact, other"
+      "label": "Food play (sploshing)"
     },
 
     {
@@ -378,9 +378,15 @@
     },
 
     {
-      "id": "orgasmcontrol",
+      "id": "orgasmdenial",
       "category": "psychological",
-      "label": "Orgasm control"
+      "label": "Orgasm denial"
+    },
+
+    {
+      "id": "forcedorgasm",
+      "category": "psychological",
+      "label": "Forced Orgasm"
     },
 
     {
@@ -390,9 +396,15 @@
     },
 
     {
-      "id": "pissscat",
-      "category": "pain",
-      "label": "Piss / Scat Play"
+      "id": "piss",
+      "category": "dynamics",
+      "label": "Piss Play"
+    },
+
+    {
+      "id": "scat",
+      "category": "dynamics",
+      "label": "Scat Play"
     },
 
     {
@@ -432,12 +444,6 @@
     },
 
     {
-      "id": "pain",
-      "category": "pain",
-      "label": "Pain, other"
-    },
-
-    {
       "id": "role",
       "category": "dynamics",
       "label": "Role Play"
@@ -446,7 +452,7 @@
     {
       "id": "sensory",
       "category": "sensation",
-      "label": "Sensory Play / Sensory Deprivation"
+      "label": "Sensory Deprivation"
     },
 
     {
@@ -579,12 +585,6 @@
       "id": "bodyworship",
       "category": "sex",
       "label": "Body / Genital Worship"
-    },
-
-    {
-      "id": "bondage",
-      "category": "bondage",
-      "label": "Bondage / Restraint, other"
     },
 
     {
@@ -766,6 +766,42 @@
       "id": "compression",
       "category": "sensation",
       "label": "Body Compression"
+    },
+
+    {
+      "id": "verbalbondage",
+      "category": "bondage",
+      "label": "Verbal Bondage"
+    },
+
+    {
+      "id": "publicsex",
+      "category": "sex",
+      "label": "Public Sex"
+    },
+
+    {
+      "id": "drugged",
+      "category": "psychological",
+      "label": "Consensual Drunk/Drugged Play"
+    },
+
+    {
+      "id": "sleepy",
+      "category": "psychological",
+      "label": "Sleepy Sex"
+    },
+
+    {
+      "id": "genital torture",
+      "category": "pain",
+      "label": "Genital Torture"
+    },
+
+    {
+      "id": "suctiondevice",
+      "category": "toys / gear",
+      "label": "Suction device / enlarger"
     }
 
   ]
