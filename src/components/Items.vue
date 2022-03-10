@@ -88,10 +88,9 @@
             :download="'ynm-' + new Date().getTime() + '.txt'" 
             class="save-button"
             @click="getDataString" >
-                Download to file
+                Save current list to load later
         </a>
-    </div>
-    <div class="control-panel hide-print">
+
         <textarea
             v-model="loadJsonText"
             id="loadFromJson" 
@@ -99,10 +98,10 @@
             cols="100" rows="4" 
             placeholder="open your ynm.txt file in a *plain text editor* and paste it here" />
         <button class="load-button" :class="canLoad ? 'enabled' : 'disabled'" @click="loadJson">
-            Load saved from file
+            Load saved list from file
         </button>
         <button class="load-button" :class="canLoad ? 'enabled' : 'disabled'" @click="loadJsonAndCompare">
-            Load saved and compare to current values
+            Load saved list and Compare to current list
         </button>
     </div>
   </section>
@@ -448,7 +447,7 @@ export default {
     flex-basis: 25%;
     max-width: 200px;
 }
-.column.notes {
+.column.notes, .column.notes2 {
     flex-basis: 35%;
 }
 @media screen and (max-width:800px) {
@@ -506,12 +505,11 @@ export default {
     /* hide upload/download buttons in compare mode */
     display: none;
 }
-
 .control-panel {
     margin-top: 100px;
-}
-.control-panel + .control-panel {
-    margin-top: 0;
+    border: 1px solid #999;
+    background-color: aliceblue;
+    padding-bottom: 20px;
 }
 .save-button, .load-button, .toggle-button {
     display: inline-block;
@@ -525,7 +523,9 @@ export default {
     text-decoration: none;
     cursor: pointer;
 }
-
+.save-button {
+    margin-bottom: 60px;
+}
 .save-button:hover, .load-button:not(.disabled):hover, .toggle-button:hover {
     opacity: .7;
 }
