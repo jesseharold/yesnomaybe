@@ -321,7 +321,9 @@ export default {
                 return false;
             }
             const row = this.items.filter(itm => itm.id === itemId)[0]
-            return (row.giving || 0) < this.compareThreshold && (row.receiving || 0) < this.compareThreshold
+            // default to zero if the value is NaN because of some string conversion
+            return (row.giving || 0) < this.compareThreshold 
+                && (row.receiving || 0) < this.compareThreshold
         }
   },
 }

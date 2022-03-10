@@ -9,9 +9,6 @@ You can save your work by downloading your data to a plain text file (`ynm-[numb
 
 Share your YNM list with someone by printing it out, saving it as a PDF, or sending someone your ynm.text file, which they can upload into the app and look at. (PDF printing tip: make sure you have background colors turned on in your print settings, or it won't look as nice).
 
-## Todo
-- ability to compare two lists, only show yes/maybe overlaps
-
 ## Project setup
 ```
 npm install
@@ -36,4 +33,5 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Attributions
-icons from <a href="https://www.flaticon.com/free-icons/venn-diagram" title="venn diagram icons">Flat Icons</a>
+App scaffolding by <a href="https://cli.vuejs.org/guide/">@vue/cli</a>
+icons from <a href="https://www.flaticon.com/free-icons/venn-diagram">Flat Icons</a>
