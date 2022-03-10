@@ -211,7 +211,8 @@ export default {
         getDataString(e) {
             e.stopPropagation()
             // stringify and obscure current data
-            const unreadableData = util.obfuscate(JSON.stringify(this.items))
+            const dataToSave = { items: this.items, columns: this.columns }
+            const unreadableData = util.obfuscate(JSON.stringify(dataToSave))
             // create text blob
             const data = new Blob([unreadableData], {type: 'text/plain'});
             // If we are replacing a previously generated file we need to
@@ -227,9 +228,17 @@ export default {
             if (!this.canLoad) {
                 return
             }
-            this.rawItems = JSON.parse(util.deobfuscate(this.loadJsonText))
+            const savedData = JSON.parse(util.deobfuscate(this.loadJsonText))
+            if (savedData.items) {
+                this.rawItems = savedData.items
+                this.columns = savedData.columns
+            } else {
+                // backwards-compatible from before there was columns in saved data
+                this.rawItems = savedData
+            }
             this.loadJsonText = ''
             this.openAllCategories()
+            document.getElementById('items').scrollIntoView()
         }
   },
 }
