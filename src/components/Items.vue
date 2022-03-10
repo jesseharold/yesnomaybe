@@ -331,7 +331,7 @@ export default {
 /* rows */
 #items {
     max-width: 1024px;
-    margin: 30px auto;
+    margin: 30px auto 80px;
 }
 .row {
     padding: 10px;

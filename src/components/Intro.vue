@@ -19,11 +19,18 @@
       </p>
       <h4>Sharing your list</h4> 
       <p>
-        To share your list with someone after you fill it out separately, 
-        make sure all the categories you want to include are expanded, closed categories will not appear on your list.
-        <b>Print</b> this page, either on paper, or
-        print to a PDF and save it. (it looks best if you turn background colors on in your PDF print settings.) You
-        can also email someone your ynm.txt file, and they can upload it into the app to view it.
+        There are a few different ways to share your list after you fill it out:<br />
+        <b>Print</b>. Make sure all the categories you want to include are expanded, closed categories will 
+        not appear on your list. Print this page, either on paper, or
+        print to a PDF and save it. (it looks best if you turn background colors on in your PDF print settings.) 
+        <br />
+        <b>Share and view in the app</b>. Email someone your ynm.txt file, and they can view it by uploading it into the app 
+        using the "Load saved" button at the bottom.
+        <br />
+        <b>Compare two lists in the app</b>. While you're viewing your own list, use the "Load and compare" 
+        button at the bottom to upload a list someone has shared with you. You will be automatically show 
+        where your answers overlap. You can choose how much to filter
+        your overlap, whether you want to see everything, or only items where you both have enthusiastic "YES"es.
       </p>
       <h4>Filling it out together (alternate use)</h4> 
       <p>
@@ -35,18 +42,12 @@
       </p>
       <h4>Consent and negotiation</h4> 
       <p>
-        Sit with another person, check and see where you have overlapping yeses or maybes, and talk about 
+        Where you have overlapping yeses or maybes with another person, and talk about 
         what it might look like to do it together! <b>If someone has a "no" for any item, it does not need 
-        to be discussed.</b> If someone hasn't set a value for an item, it's up to you if you are open to 
-        talking about it. Revisit your list periodically, as people's desire and openness changes all the time.
+        to be discussed.</b> If someone left an item blank, it's up to you if you want to 
+        talk about it (the list is long!). Revisit your list periodically, as people's desire and openness changes all the time.
         There are lots of great resources out there <a href="https://www.rainn.org/articles/what-is-consent" 
-        target="_blank">about consent</a>, please review them periodically, too! 
-      </p>
-      <h4>Credits</h4>
-      <p>
-        App designed and coded by <a href="https://github.com/jesseharold" target="_blank">jesseharold</a>. With content and inspiration from sex educators like <a href="http://www.bextalkssex.com/" target="_blank">Bex Caputo</a>, 
-        <a href="http://www.thatotherpaper.com/austin/yes_no_maybe" target="_blank">RC McCloud</a>, <a href="https://www.scarleteen.com/article/advice/yes_no_maybe_so_a_sexual_inventory_stocklist" target="_blank">and</a> 
-        &nbsp;<a href="https://drive.google.com/file/d/1nGtucisumva0kOXggAWH9Y4JEHLl0ts5/view" target="_blank">others</a>.
+        target="_blank">about consent</a>.
       </p>
   </div>
 </template>
@@ -64,6 +65,7 @@ export default {
 .hello {
     max-width: 1024px;
     margin: 0 auto;
+    text-align: left;
 }
 h3 {
   margin: 40px 0 0;
