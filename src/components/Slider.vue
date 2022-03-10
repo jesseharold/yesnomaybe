@@ -1,6 +1,6 @@
 <template>
   <div :class="classObject" class="slider-container">
-    <input type="range" min="-1" max="3" v-model="sliderValue" class="slider" 
+    <input type="range" min="-1" max="3" v-model="sliderValue" v-if="!readonly" class="slider" 
      :name="'slider_' + name" />
     <div class="slider-label">{{ labelsObject[sliderValue] }}</div>
   </div>
@@ -12,30 +12,33 @@ export default {
   name: 'Slider',
   props: {
     name: String,
-    value: String,
+    value: Number,
+    readonly: Boolean,
   },
   computed: {
     sliderValue() {
-        return this.value || "0"
+        return this.value || 0
     },
     classObject() {
       if (this.name.indexOf('_experience') > 0) {
         return {
           ['slider_' + this.name]: true,
-          'no-exp': this.sliderValue == "-1",
-          'unset': this.sliderValue == "0",
-          'little-exp': this.sliderValue == "1",
-          'yes-exp': this.sliderValue == "2",
-          'high-exp': this.sliderValue == "3",
+          'no-exp': this.sliderValue == -1,
+          'unset': this.sliderValue == 0,
+          'little-exp': this.sliderValue == 1,
+          'yes-exp': this.sliderValue == 2,
+          'high-exp': this.sliderValue == 3,
+          'interactive': !this.readonly,
         }
       }
       return {
         ['slider_' + this.name]: true,
-        'no': this.sliderValue == "-1",
-        'unset': this.sliderValue == "0",
-        'maybe': this.sliderValue == "1",
-        'yes': this.sliderValue == "2",
-        'high-yes': this.sliderValue == "3",
+        'no': this.sliderValue == -1,
+        'unset': this.sliderValue == 0,
+        'maybe': this.sliderValue == 1,
+        'yes': this.sliderValue == 2,
+        'high-yes': this.sliderValue == 3,
+        'interactive': !this.readonly,
       }
     },
     labelsObject() {
@@ -63,6 +66,9 @@ export default {
 <style scoped>
 .slider-container {
   width: 100%;
+  max-width: 400px;
+  margin: auto;
+  height: 40px;
 }
 .slider {
   /* hide the slider, but keep them in the tab order */
@@ -89,15 +95,15 @@ export default {
   cursor: pointer;
 } 
 
-.slider-container:hover .slider {
+.slider-container.interactive:hover .slider {
   opacity: 1;
   position: relative;
   z-index: unset;
 }
-.slider-container:hover .slider-label {
+.slider-container.interactive:hover .slider-label {
   display: none;
 }
-.slider-container .slider:focus ~ .slider-label {
+.slider-container.interactive .slider:focus ~ .slider-label {
   border: 2px solid blue;
 }
 

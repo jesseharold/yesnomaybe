@@ -1,6 +1,15 @@
 <template>
-  <section id="items">
-      <!-- labels row -->
+  <section id="items" :class="compareMode ? 'compare-mode' : ''">
+    <h3 v-if="compareMode" class="hide-print">Show only items that have this level of interest or higher:</h3>
+    <Slider
+        v-if="compareMode"
+        class="hide-print"
+        name="compareThreshold"
+        :readonly="false"
+        :value="`${compareThreshold}`"
+        @change="(e) => setCompareThreshold(e.target.value)" />
+
+    <!-- labels row -->
     <div class="row columns column-labels">
         <div class="column activity">
             <button class="toggle-button hide-print" @click="openAllCategories">Open all</button>
@@ -33,7 +42,7 @@
             </button>
         </h2>
         <!-- item rows -->
-        <div class="row columns" v-for="item in category" v-bind:key="item.id">
+        <div class="row columns" :class="filteredOut(item.id) ? 'hidden' : ''" v-for="item in category" v-bind:key="item.id">
             <div class="item column activity">
                 <button class="remove-button hide-print" title="Delete this Row" @click="removeItem(item.id)">X</button>
                 {{ item.label }}
@@ -42,7 +51,8 @@
                 <Slider 
                     v-if="!column.inputType" 
                     :name="item.id + '_' + column.id"
-                    :value="item[column.id]"
+                    :value="parseInt(item[column.id])"
+                    :readonly="compareMode"
                     @change="(e) => setValue(item.id, column.id, e.target.value)" />
                 <Editor
                     v-if="column.inputType === 'text'" 
@@ -52,6 +62,7 @@
                     initial-value=""
                     :inline="true"
                     v-model="item.notes"
+                    :disabled="compareMode"
                     :init="{
                         menubar: false,
                         plugins: [],
@@ -87,7 +98,12 @@
             name="loadFromJson"
             cols="100" rows="4" 
             placeholder="open your ynm.txt file in a *plain text editor* and paste it here" />
-        <button class="load-button" :class="canLoad ? 'enabled' : 'disabled'" @click="loadJson">Load saved from file</button>
+        <button class="load-button" :class="canLoad ? 'enabled' : 'disabled'" @click="loadJson">
+            Load saved from file
+        </button>
+        <button class="load-button" :class="canLoad ? 'enabled' : 'disabled'" @click="loadJsonAndCompare">
+            Load saved and compare to current values
+        </button>
     </div>
   </section>
 </template>
@@ -113,7 +129,9 @@ export default {
         newCustomName: '',
         newCategoryName: '',
         loadJsonText: '',
-        textFile: null
+        textFile: null,
+        compareMode: false,
+        compareThreshold: 0
     }
   },
   computed: {
@@ -175,6 +193,9 @@ export default {
             const item = this.items.filter(itm => itm.id === id)[0]
             item[column] = value
         },
+        setCompareThreshold(value) {
+            this.compareThreshold = value
+        },
         addItem(name, categoryName) {
             this.newCustomName = ''
             if (!this.categoryOpen[categoryName] && this.categoryOpen[categoryName] !== false) {
@@ -204,7 +225,7 @@ export default {
             this.columns = this.columns.filter(col => col.id !== 'experience')
         },
         renameColumn(colId) {
-            const thisCol = this.columns.filter(col => col.id === colId)[0];
+            const thisCol = this.columns.filter(col => col.id === colId)[0]
             const input = prompt("Rename '" + colId + "' column to:")
             thisCol.label = input
         },
@@ -239,6 +260,68 @@ export default {
             this.loadJsonText = ''
             this.openAllCategories()
             document.getElementById('items').scrollIntoView()
+        },
+        loadJsonAndCompare() {
+            if (!this.canLoad) {
+                return
+            }
+            const savedData = JSON.parse(util.deobfuscate(this.loadJsonText))
+            if (savedData.items) {
+                // ignore custom columns on second sheet, use first one
+                this.loadJsonText = ''
+                this.compareTwo(savedData.items)
+                this.openAllCategories()
+                document.getElementById('items').scrollIntoView()
+            }
+        },
+        compareTwo(compareToItems) {
+            this.compareMode = true;
+            const overlapItems = []
+            this.rawItems.forEach(item => {
+                // look up each item in second uploaded data set
+                const p2item = compareToItems.filter(itm => itm.id === item.id)[0]
+                // skip any items that aren't in both lists for any reason
+                if (p2item) {
+                    const overlap = {
+                        id: item.id,
+                        label: item.label,
+                        category: item.category,
+                        // use the lower of the two compared values
+                        giving: Math.min(parseInt(item.receiving), parseInt(p2item.giving)),
+                        receiving: Math.min(parseInt(item.giving), parseInt(p2item.receiving)),
+                        p1notes: item.notes,
+                        p2rnotes: p2item.notes
+                    }
+                    // create new data set with the overlaps
+                    overlapItems.push(overlap)
+                }
+            });
+            // prompt for name/initial to use for two people
+            const p1Name = prompt("Name / initial for first person entered/uploaded")
+            const p2Name = prompt("Name / initial for person uploaded second")
+
+            // rename columns
+            this.columns.filter(col => col.id === 'giving')[0].label = p1Name + " receiving"
+            this.columns.filter(col => col.id === 'receiving')[0].label = p2Name + " receiving"
+            this.columns.filter(col => col.id === 'notes')[0].label = p1Name + " notes"
+            this.columns.push({id: "notes2", label: p2Name + " notes", inputType: "text"})
+            this.removeExperienceColumn()
+
+            // copy overlapItems into main data
+            this.rawItems = overlapItems
+
+            // tweak display for overlap items
+            
+        },
+        filteredOut(itemId) {
+            // returns true if we're currently comparing two sheets, 
+            // and if *both* people have a lower interest level in this item 
+            // than the set threshold filter
+            if (!this.compareMode || this.compareThreshold === -1) {
+                return false;
+            }
+            const row = this.items.filter(itm => itm.id === itemId)[0]
+            return (row.giving || 0) < this.compareThreshold && (row.receiving || 0) < this.compareThreshold
         }
   },
 }
@@ -253,6 +336,9 @@ export default {
 .row {
     padding: 10px;
     position: relative;
+}
+.row.hidden {
+    display: none;
 }
 .row:nth-child(even) {
     background: rgb(221, 255, 254);
@@ -409,6 +495,14 @@ export default {
 }
 .add-custom button:hover {
     background-color: #f999ff;
+}
+.compare-mode .add-custom {
+    /* hide add custom buttons in compare mode */
+    display: none;
+}
+.compare-mode .control-panel {
+    /* hide upload/download buttons in compare mode */
+    display: none;
 }
 
 .control-panel {
