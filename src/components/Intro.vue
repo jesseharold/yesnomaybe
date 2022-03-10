@@ -12,7 +12,7 @@
         item you don't wish to fill out. Or just leave it in the
         blank state that each row starts in, which simply indicates "no response". When sharing, let the other
         person know you don't want to discuss all the blank items, and save your energy for the fun stuff! You can
-        always revisit later.
+        always revisit later. Also, the "previous experience" column can be removed, if it doesn't feel important to you.
       </p>
       <h4>Privacy</h4>
       <p>
@@ -23,23 +23,26 @@
       </p>
       <h4>Saving your list</h4>
       <p>
-        You can privately save your list as an obscured (not readable
+        There are a few different ways to save your list after you fill it out.<br /><br />
+        <b>Print</b>. Print this page, either on paper, or
+        print to a PDF and save it. Make sure all the categories you want to include are expanded. Collapsed categories will 
+        not appear on your printed list. It looks best if you turn background colors on in your PDF print settings.
+        <br /><br />
+        <b>ynm.txt</b> You can privately save your list as an obscured (not readable
         by humans) ynm.txt file using the "Download to file" button at the bottom. Load your sheet later to view or
         keep working on it by opening the ynm.txt file in a plain text
-        editor (not MS Word) and pasting the contents into the field at the bottom of the page.
+        editor (not MS Word) and pasting the contents into the field at the bottom of the page. Make sure to dowload a new ynm.txt
+        file after you have made changes.
       </p>
       <h4>Sharing your list</h4> 
       <p>
-        There are a few different ways to share your list after you fill it out:<br /><br />
-        <b>Print</b>. Make sure all the categories you want to include are expanded, closed categories will 
-        not appear on your list. Print this page, either on paper, or
-        print to a PDF and save it. (looks best if you turn background colors on in your PDF print settings.) 
-        <br /><br />
+        <b>Show or send someone your printed list</b>. Sit together in person with your lists and discuss, or email them your 
+        PDF.
         <b>Share and view in the app</b>. Email someone your ynm.txt file. They can view it by coming to the site
         and uploading it, using the "Load saved list" button at the bottom.
         <br /><br />
         <b>Compare two lists in the app</b> (new!). While you're viewing your own list, use the "Load and compare" 
-        button at the bottom to upload a list someone has shared with you. You will be automatically shown 
+        button at the bottom to upload a ynm.txt file someone has shared with you. You will be automatically shown 
         where your "giving" answers overlap with the other person's "receiving" answers, and vice versa. 
         You can choose how much to filter
         your overlap, whether you want to see everything, or only items where you both have enthusiastic "YES"es.
@@ -49,7 +52,7 @@
         Traditionally, these lists are filled out separately, to give everyone time and space to think without
         pressure. But if you prefer to fill this out together with another person, use the little pencil icons to 
         rename the giving/receiving columns to "[name/initial of person 1] receiving" and "[name/initial of person 2] receiving".
-        You might want to hide the experience column, since there's only one.
+        You might want to hide the "experience" column, since there's only one.
         Then go through the list and agree together on a shared level of interest in each person receiving any interesting items.
         If you have different interest levels, the lower of the two should be used. "No"s from anyone should be recorded as no.
       </p>
