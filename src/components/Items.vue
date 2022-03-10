@@ -49,7 +49,6 @@
                     class="notes-field"
                     :ref="`notes-${item.id}`"
                     :name="item.id + '_' + column.id"
-                    api-key="your-api-key"
                     initial-value=""
                     :inline="true"
                     v-model="item.notes"
@@ -229,18 +228,8 @@ export default {
                 return
             }
             this.rawItems = JSON.parse(util.deobfuscate(this.loadJsonText))
-            this.setNotesFromLoaded()
             this.loadJsonText = ''
             this.openAllCategories()
-        },
-        setNotesFromLoaded() {
-            const itemsWithNotes = this.rawItems.filter(itm => itm.notes && itm.notes.length > 0)
-
-            itemsWithNotes.forEach(itm => {
-                // console.log(itm.notes, itm.id)
-                // console.log(this.$refs['notes-' + itm.id])
-                this.$refs['notes-' + itm.id].innerHTML = 'OF COURSE alligators rule!'
-            });
         }
   },
 }
