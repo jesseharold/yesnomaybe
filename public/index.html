@@ -5,6 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <style type="text/css">
+      /* overwrite some tinymce styles not in app scope */
+      .tox-notifications-container {
+          display: none;
+      }
+      p {
+          display: block;
+          margin-block-start: 5px;
+          margin-block-end: 5px;
+          margin-inline-start: 5px;
+          margin-inline-end: 5px;
+      }
+    </style>
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>

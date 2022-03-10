@@ -44,14 +44,21 @@
                     :name="item.id + '_' + column.id"
                     :value="item[column.id]"
                     @change="(e) => setValue(item.id, column.id, e.target.value)" />
-                <div 
+                <Editor
                     v-if="column.inputType === 'text'" 
-                    v-text="item.notes || ''"
-                    class="notes-field" 
+                    class="notes-field"
+                    :ref="`notes-${item.id}`"
                     :name="item.id + '_' + column.id"
-                    contenteditable="true" 
-                    placeholder="Notes" 
-                    @keyup="(e) => setValue(item.id, column.id, e.target.innerText)" />
+                    api-key="your-api-key"
+                    initial-value=""
+                    :inline="true"
+                    v-model="item.notes"
+                    :init="{
+                        menubar: false,
+                        plugins: [],
+                        toolbar: ''
+                    }" 
+                />
             </div>
         </div>
         <!-- add new item to this category -->
@@ -91,10 +98,13 @@ import itemData from '../json/items.json'
 import columnData from '../json/columns.json'
 import util from '../util/util'
 import Slider from '../components/Slider'
+import Editor from '@tinymce/tinymce-vue'
+
 export default {
   name: 'Items',
   components: {
-    Slider
+    Slider,
+    Editor
   },
   data() {
     return {
@@ -184,7 +194,6 @@ export default {
             this.addItem(name, name)
         },
         removeItem(itemid) {
-            console.log("remove ", itemid)
             for( var i = 0; i < this.items.length; i++){                    
                 if ( this.items[i].id === itemid) { 
                     this.items.splice(i, 1); 
@@ -220,8 +229,18 @@ export default {
                 return
             }
             this.rawItems = JSON.parse(util.deobfuscate(this.loadJsonText))
+            this.setNotesFromLoaded()
             this.loadJsonText = ''
             this.openAllCategories()
+        },
+        setNotesFromLoaded() {
+            const itemsWithNotes = this.rawItems.filter(itm => itm.notes && itm.notes.length > 0)
+
+            itemsWithNotes.forEach(itm => {
+                // console.log(itm.notes, itm.id)
+                // console.log(this.$refs['notes-' + itm.id])
+                this.$refs['notes-' + itm.id].innerHTML = 'OF COURSE alligators rule!'
+            });
         }
   },
 }
@@ -253,19 +272,19 @@ export default {
 
 /* notes column */
 .notes-field {
-    background-color: white;
-    border: 1px solid #aaa;
-    min-height: 100%;
+    color: #666;
+    background-color: #f8ffff;
+    border: 1px dashed #999;
     text-align: left;
-    padding: 1px 3px;
+    margin: 0;
+    padding: 0 5px;
+    font-size: 14px;
+    min-height: 37px;
 }
-.notes-field:empty::before {
-    content: 'Notes';
-    color: #aaa; 
+.notes-field p {
+    margin: 0;
 }
-.notes-field:empty:focus::before {
-    content: '';
-}
+
 .column-labels .remove-button {
     right: -5px;
     left: unset;
@@ -381,7 +400,6 @@ export default {
 @media screen and (max-width:800px) {
     .add-custom input {
         flex-basis: 100%;
-        margin-top: 0;
     }
 }
 .add-custom button {
@@ -446,6 +464,7 @@ export default {
         display: none;
     }
     .category-title {
+        width: 100%;
         justify-content: center;
         border: 1px solid #000;
         padding: 10px 0;

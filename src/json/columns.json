@@ -14,7 +14,7 @@
         },
         {
             "id": "notes",
-            "label": "",
+            "label": "Notes",
             "inputType": "text"
         }
     ]
