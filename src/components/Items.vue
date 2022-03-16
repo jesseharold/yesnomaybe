@@ -111,7 +111,7 @@
             :name="item.id + '_' + column.id"
             initial-value=""
             :inline="true"
-            v-model="item.notes"
+            v-model="item[column.id]"
             :disabled="compareMode"
             :init="{
               menubar: false,
@@ -383,7 +383,7 @@ export default {
               parseInt(p2item.receiving)
             ),
             p1notes: item.notes,
-            p2rnotes: p2item.notes,
+            p2notes: p2item.notes,
           };
           // create new data set with the overlaps
           overlapItems.push(overlap);
@@ -401,7 +401,7 @@ export default {
       this.columns.filter((col) => col.id === "notes")[0].label =
         p1Name + " notes";
       this.columns.push({
-        id: "notes2",
+        id: "p2notes",
         label: p2Name + " notes",
         inputType: "text",
       });
@@ -409,8 +409,6 @@ export default {
 
       // copy overlapItems into main data
       this.rawItems = overlapItems;
-
-      // tweak display for overlap items
     },
     filteredOut(itemId) {
       // returns true if we're currently comparing two sheets,
@@ -556,7 +554,7 @@ export default {
   max-width: 200px;
 }
 .column.notes,
-.column.notes2 {
+.column.p2notes {
   flex-basis: 35%;
 }
 @media screen and (max-width: 800px) {
