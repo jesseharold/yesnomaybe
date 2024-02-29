@@ -240,6 +240,12 @@
     },
 
     {
+      "id": "spit",
+      "category": "sensation",
+      "label": "Spit"
+    },
+
+    {
       "id": "ice",
       "category": "sensation",
       "label": "Ice"
