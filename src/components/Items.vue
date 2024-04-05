@@ -106,7 +106,7 @@
           />
           <Editor
             v-if="column.inputType === 'text'"
-            :api-key="process.env ? process.env.VUE_APP_TINYMCE_KEY : ''"
+            :api-key="tinyMceKey"
             class="notes-field"
             :ref="`notes-${item.id}`"
             :name="item.id + '_' + column.id"
@@ -214,6 +214,7 @@ export default {
       textFile: null,
       compareMode: false,
       compareThreshold: 0,
+      tinyMceKey: process && process.env ? process.env.VUE_APP_TINYMCE_KEY : ''
     };
   },
   computed: {
