@@ -106,6 +106,7 @@
           />
           <Editor
             v-if="column.inputType === 'text'"
+            :api-key="process.env ? process.env.VUE_APP_TINYMCE_KEY : ''"
             class="notes-field"
             :ref="`notes-${item.id}`"
             :name="item.id + '_' + column.id"
