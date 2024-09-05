@@ -104,21 +104,12 @@
             :readonly="compareMode"
             @change="(e) => setValue(item.id, column.id, e.target.value)"
           />
-          <Editor
+          <EditorLoader
             v-if="column.inputType === 'text'"
-            :api-key="tinyMceKey"
-            class="notes-field"
-            :ref="`notes-${item.id}`"
-            :name="item.id + '_' + column.id"
-            initial-value=""
-            :inline="true"
-            v-model="item[column.id]"
             :disabled="compareMode"
-            :init="{
-              menubar: false,
-              plugins: [],
-              toolbar: '',
-            }"
+            :item-id="item.id"
+            :column-id="column.id"
+            v-model="item[column.id]"
           />
         </div>
       </div>
@@ -195,13 +186,13 @@ import itemData from "../json/items.json";
 import columnData from "../json/columns.json";
 import util from "../util/util";
 import Slider from "../components/Slider";
-import Editor from "@tinymce/tinymce-vue";
+import EditorLoader from "../components/EditorLoader";
 
 export default {
   name: "Items",
   components: {
     Slider,
-    Editor,
+    EditorLoader,
   },
   data() {
     return {
@@ -214,7 +205,6 @@ export default {
       textFile: null,
       compareMode: false,
       compareThreshold: 0,
-      tinyMceKey: process && process.env ? process.env.VUE_APP_TINYMCE_KEY : ''
     };
   },
   computed: {
@@ -462,21 +452,6 @@ export default {
   border-right: 0;
 }
 
-/* notes column */
-.notes-field {
-  color: #666;
-  background-color: #f8ffff;
-  border: 1px dashed #999;
-  text-align: left;
-  margin: 0;
-  padding: 0 5px;
-  font-size: 14px;
-  min-height: 37px;
-}
-.notes-field p {
-  margin: 0;
-}
-
 .column-labels .remove-button {
   right: -5px;
   left: unset;
@@ -696,12 +671,6 @@ export default {
   }
   .row.column-labels {
     position: relative;
-  }
-  .notes-field {
-    border: 0;
-  }
-  .notes-field:empty::before {
-    content: "";
   }
 }
 </style>
